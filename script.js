@@ -139,3 +139,33 @@ function generate(type=""){
   output.innerHTML=templates.token(value);
 
 }
+const copyBtn=document.getElementById("copyBtn");
+const downloadBtn=document.getElementById("downloadBtn");
+
+copyBtn.onclick=()=>{
+
+navigator.clipboard.writeText(output.innerText);
+
+copyBtn.innerText="✅ Copied";
+
+setTimeout(()=>{
+
+copyBtn.innerText="📋 Copy";
+
+},1500);
+
+}
+
+downloadBtn.onclick=()=>{
+
+const blob=new Blob([output.innerText],{type:"text/plain"});
+
+const link=document.createElement("a");
+
+link.href=URL.createObjectURL(blob);
+
+link.download="cloak-ai-output.txt";
+
+link.click();
+
+}
