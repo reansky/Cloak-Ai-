@@ -5,24 +5,6 @@ const cards = document.querySelectorAll(".card");
 
 let output = document.getElementById("ai-output");
 
-if(!output){
-
-    output=document.createElement("div");
-
-    output.id="ai-output";
-
-    output.style.margin="50px auto";
-    output.style.maxWidth="900px";
-    output.style.padding="25px";
-    output.style.background="#111";
-    output.style.border="1px solid rgba(0,200,5,.2)";
-    output.style.borderRadius="18px";
-    output.style.lineHeight="1.8";
-
-    document.querySelector(".cards").after(output);
-
-}
-
 cards.forEach(card=>{
 
 card.onclick=()=>{
