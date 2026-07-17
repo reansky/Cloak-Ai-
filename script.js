@@ -1,55 +1,54 @@
-
-// Robinhood Cloak $RHC
-// Main Website Script
-
-
-console.log("Robinhood Cloak $RHC loaded");
+console.log("Robinhood Cloak $RHC website loaded");
 
 
 
+// LOADER
 
-// Copy Contract Function
+window.addEventListener("load", ()=>{
 
-function copyCA(){
+    const loader = document.getElementById("loader");
 
-    const contract = document.getElementById("contract");
+    if(loader){
 
-    if(contract){
+        setTimeout(()=>{
 
-        navigator.clipboard.writeText(contract.innerText);
+            loader.style.display="none";
 
-        alert("Contract copied!");
+        },2500);
 
     }
 
-}
+});
 
 
 
 
 
-// Smooth reveal animation
+// SCROLL REVEAL
 
-const sections = document.querySelectorAll(
-    ".about, .token-section, .roadmap, .community, .token-card"
+
+const revealElements = document.querySelectorAll(
+    ".about, .token-section, .roadmap, .community, .token-card, .road-grid div"
 );
 
 
 
-const observer = new IntersectionObserver((entries)=>{
+const revealObserver = new IntersectionObserver((entries)=>{
 
 
-    entries.forEach(entry=>{
+    entries.forEach((entry)=>{
 
 
         if(entry.isIntersecting){
 
-            entry.target.classList.add("show");
+            entry.target.style.opacity="1";
+            entry.target.style.transform="translateY(0)";
 
         }
 
 
     });
+
 
 
 },{
@@ -58,10 +57,76 @@ const observer = new IntersectionObserver((entries)=>{
 
 
 
-sections.forEach(section=>{
 
-    section.classList.add("hidden");
 
-    observer.observe(section);
+revealElements.forEach((element)=>{
+
+
+    element.style.opacity="0";
+
+    element.style.transform="translateY(40px)";
+
+    element.style.transition="1s";
+
+
+    revealObserver.observe(element);
+
 
 });
+
+
+
+
+
+
+
+// NAVBAR EFFECT
+
+
+window.addEventListener("scroll",()=>{
+
+
+    const navbar = document.getElementById("navbar");
+
+
+    if(window.scrollY > 50){
+
+        navbar.style.borderBottom="1px solid #222";
+
+    }else{
+
+        navbar.style.borderBottom="none";
+
+    }
+
+
+});
+
+
+
+
+
+
+
+// COPY CONTRACT READY
+
+
+function copyCA(){
+
+
+const contract = document.getElementById("contract");
+
+
+if(contract){
+
+
+navigator.clipboard.writeText(contract.innerText);
+
+
+alert("Contract copied!");
+
+
+}
+
+
+}
