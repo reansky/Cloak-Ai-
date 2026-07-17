@@ -1,54 +1,60 @@
-const input = document.getElementById("prompt");
-const sendBtn = document.getElementById("sendBtn");
-const response = document.getElementById("response");
+const input = document.querySelector(".search input");
+const button = document.querySelector(".search button");
 
-const replies = {
-  "create token":
-    "🪙 Token Idea\n\nName: Shadow Hood\nTicker: $SHDW\n\nA stealth-powered memecoin built for Robinhood Chain.",
+const cards = document.querySelectorAll(".card");
 
-  "whitepaper":
-    "📄 Whitepaper\n\nMission:\nBuild a fun, community-driven AI ecosystem on Robinhood Chain.\n\nUtility:\nAI tools, branding and launch assistant.",
+button.addEventListener("click", generate);
 
-  "roadmap":
-    "🗺️ Roadmap\n\nPhase 1 - Branding\nPhase 2 - Community\nPhase 3 - AI Tools\nPhase 4 - Ecosystem Expansion",
+input.addEventListener("keydown", function(e){
 
-  "brand":
-    "🎨 Brand\n\nPrimary Color: Robinhood Green\nSecondary: Black\nStyle: Minimal • AI • Futuristic",
-
-  "x thread":
-    "🐦 X Thread\n\n🚀 Introducing Cloak AI.\nThe AI Workspace for Robinhood Chain builders.\nBuild Smarter. Launch Faster.",
-
-  "checklist":
-    "✅ Launch Checklist\n\n• Logo\n• Website\n• Social Media\n• Token Metadata\n• Community\n• Launch"
-};
-
-function runPrompt() {
-  const text = input.value.trim().toLowerCase();
-
-  if (!text) {
-    response.innerHTML = "Please enter a prompt.";
-    return;
-  }
-
-  let found = false;
-
-  Object.keys(replies).forEach((key) => {
-    if (text.includes(key)) {
-      response.innerHTML = replies[key].replace(/\n/g, "<br>");
-      found = true;
+    if(e.key==="Enter"){
+        generate();
     }
-  });
 
-  if (!found) {
-    response.innerHTML =
-      "🤖 Cloak AI is ready. AI integration will be added in the next version.";
-  }
-}
-
-sendBtn.addEventListener("click", runPrompt);
-
-input.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    runPrompt();
-  }
 });
+
+cards.forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        input.value=card.querySelector("h3").innerText;
+
+        generate();
+
+    });
+
+});
+
+function generate(){
+
+    const prompt=input.value.trim();
+
+    if(prompt===""){
+
+        alert("Please enter a prompt.");
+
+        return;
+
+    }
+
+    button.innerHTML="Generating...";
+
+    button.disabled=true;
+
+    setTimeout(()=>{
+
+        button.innerHTML="Generate";
+
+        button.disabled=false;
+
+        alert(
+`Prompt:
+${prompt}
+
+🚀 AI Integration Coming Soon
+
+Next version will connect to a real AI model and generate professional crypto content automatically.`);
+
+    },1200);
+
+}
