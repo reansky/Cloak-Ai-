@@ -12,10 +12,14 @@ html{
 
 
 body{
+
     background:#030303;
     color:white;
     overflow-x:hidden;
+
 }
+
+
 
 
 
@@ -31,10 +35,9 @@ body{
     justify-content:center;
     align-items:center;
     z-index:9999;
-    animation:hideLoader 1s forwards;
-    animation-delay:2s;
 
 }
+
 
 
 #loader img{
@@ -47,8 +50,8 @@ body{
 
 #loader h2{
 
-    margin-top:20px;
     color:#00ff66;
+    margin-top:20px;
 
 }
 
@@ -61,25 +64,10 @@ body{
 
 
 
-@keyframes hideLoader{
-
-    to{
-
-        opacity:0;
-        visibility:hidden;
-
-    }
-
-}
-
-
-
 @keyframes pulse{
 
     50%{
-
         transform:scale(1.1);
-
     }
 
 }
@@ -100,10 +88,11 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(3,3,3,.7);
+    background:rgba(3,3,3,.75);
     backdrop-filter:blur(15px);
 
 }
+
 
 
 
@@ -118,12 +107,15 @@ body{
 }
 
 
+
+
 .brand img{
 
     width:45px;
     height:45px;
 
 }
+
 
 
 
@@ -155,8 +147,8 @@ nav a:hover{
     min-height:85vh;
     padding:50px 8%;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     gap:50px;
 
 }
@@ -175,11 +167,10 @@ nav a:hover{
 
     display:inline-block;
     padding:10px 18px;
-    border-radius:30px;
-    background:rgba(0,255,102,.1);
     border:1px solid #00ff66;
+    border-radius:30px;
     color:#00ff66;
-    margin-bottom:25px;
+    background:#00ff6615;
 
 }
 
@@ -188,8 +179,8 @@ nav a:hover{
 
 h1{
 
+    margin-top:20px;
     font-size:70px;
-    line-height:1.05;
 
 }
 
@@ -216,7 +207,6 @@ h1 span{
 
 
 
-
 .stats{
 
     display:flex;
@@ -227,13 +217,13 @@ h1 span{
 
 
 
+
 .stats div{
 
     background:#111;
     border:1px solid #222;
     padding:20px;
     border-radius:20px;
-    min-width:100px;
     text-align:center;
 
 }
@@ -249,12 +239,12 @@ h1 span{
 
 
 
-
 .stats span{
 
     color:#aaa;
 
 }
+
 
 
 
@@ -272,12 +262,22 @@ h1 span{
 
     display:inline-block;
     padding:15px 30px;
+    margin-right:10px;
     background:#00ff66;
     color:black;
     border-radius:30px;
     text-decoration:none;
     font-weight:bold;
-    margin-right:10px;
+    transition:.3s;
+
+}
+
+
+
+.btn a:hover{
+
+    transform:translateY(-5px);
+    box-shadow:0 0 25px #00ff66;
 
 }
 
@@ -290,19 +290,16 @@ h1 span{
     width:450px;
     max-width:100%;
     filter:drop-shadow(0 0 40px #00ff66);
-    animation:float 5s infinite ease-in-out;
+    animation:float 5s infinite;
 
 }
-
 
 
 
 @keyframes float{
 
     50%{
-
         transform:translateY(-20px);
-
     }
 
 }
@@ -312,9 +309,10 @@ h1 span{
 
 
 
-.about,
+/* TOKEN */
+
+
 .token-section,
-.roadmap,
 .community{
 
     margin:80px 8%;
@@ -324,23 +322,12 @@ h1 span{
 
 
 
-h2{
+.token-section h2,
+.community h2{
 
     color:#00ff66;
     font-size:42px;
-    margin-bottom:25px;
-
-}
-
-
-
-.about p,
-.community p{
-
-    color:#aaa;
-    max-width:750px;
-    margin:auto;
-    line-height:1.7;
+    margin-bottom:30px;
 
 }
 
@@ -357,6 +344,7 @@ h2{
 
 
 
+
 .token-card{
 
     background:rgba(255,255,255,.05);
@@ -366,6 +354,7 @@ h2{
     backdrop-filter:blur(10px);
 
 }
+
 
 
 
@@ -379,43 +368,57 @@ h2{
 
 
 
-.road-grid{
+.token-card p{
 
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    color:#aaa;
+    word-break:break-all;
 
 }
 
 
 
-.road-grid div{
 
-    background:#111;
-    border:1px solid #222;
-    padding:30px;
+.token-card button{
+
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    background:#00ff66;
     border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
 
 }
 
 
 
-.road-grid h3{
+.token-card button:hover{
 
-    color:#00ff66;
+    box-shadow:0 0 20px #00ff66;
 
 }
+
+
+
+
+
+
+.community p{
+
+    color:#aaa;
+
+}
+
 
 
 
 footer{
 
-    padding:40px;
     text-align:center;
+    padding:40px;
     color:#777;
 
 }
-
 
 
 
@@ -439,6 +442,7 @@ nav{
 }
 
 
+
 h1{
 
     font-size:42px;
@@ -456,14 +460,6 @@ h1{
 
 
 .token-grid{
-
-    grid-template-columns:1fr;
-
-}
-
-
-
-.road-grid{
 
     grid-template-columns:1fr;
 
