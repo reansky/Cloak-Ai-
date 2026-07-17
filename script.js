@@ -213,3 +213,293 @@ link.click();
 }
 
 }
+
+/* ===================================================
+   CLOAK AI V3
+   SCRIPT PART 1
+   Navbar + FAQ + Counter
+=================================================== */
+
+/* NAVBAR SCROLL */
+
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 30) {
+
+        navbar.style.background = "rgba(10,10,10,.88)";
+        navbar.style.backdropFilter = "blur(14px)";
+        navbar.style.borderBottom = "1px solid rgba(255,255,255,.05)";
+
+    } else {
+
+        navbar.style.background = "transparent";
+        navbar.style.backdropFilter = "none";
+        navbar.style.borderBottom = "none";
+
+    }
+
+});
+
+/* FAQ */
+
+document.querySelectorAll(".faq-item").forEach(item => {
+
+    const answer = item.querySelector(".faq-answer");
+
+    answer.style.display = "none";
+
+    item.addEventListener("click", () => {
+
+        const open = answer.style.display === "block";
+
+        document.querySelectorAll(".faq-answer").forEach(a => {
+
+            a.style.display = "none";
+
+        });
+
+        answer.style.display = open ? "none" : "block";
+
+    });
+
+});
+
+/* COUNTER */
+
+const counters = document.querySelectorAll(".stat-card h2");
+
+const runCounter = () => {
+
+    counters.forEach(counter => {
+
+        const text = counter.innerText;
+
+        if (!text.includes("1B")) return;
+
+        let number = 0;
+
+        const timer = setInterval(() => {
+
+            number += 25;
+
+            counter.innerText = number + "M";
+
+            if (number >= 1000) {
+
+                counter.innerText = "1B";
+
+                clearInterval(timer);
+
+            }
+
+        }, 20);
+
+    });
+
+};
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            runCounter();
+
+            observer.disconnect();
+
+        }
+
+    });
+
+});
+
+observer.observe(document.querySelector(".stats"));
+
+/* ===================================================
+   CLOAK AI V3
+   SCRIPT PART 2
+   Scroll Reveal + Floating Particles
+=================================================== */
+
+/* SCROLL REVEAL */
+
+const revealElements = document.querySelectorAll(
+    ".tool-card, .feature, .token-card, .phase, .stat-card, .faq-item"
+);
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("fade-up");
+
+            revealObserver.unobserve(entry.target);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+revealElements.forEach((el) => {
+
+    revealObserver.observe(el);
+
+});
+
+
+/* FLOATING PARTICLES */
+
+const particleCount = 30;
+
+for (let i = 0; i < particleCount; i++) {
+
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.style.left = Math.random() * 100 + "%";
+
+    particle.style.top = Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (8 + Math.random() * 12) + "s";
+
+    particle.style.animationDelay =
+        (Math.random() * 6) + "s";
+
+    document.body.appendChild(particle);
+
+}
+
+/* ===================================================
+   CLOAK AI V3
+   SCRIPT PART 3 FINAL
+   Mouse Glow + Loading + Active Navigation
+=================================================== */
+
+/* ===========================
+   LOADING SCREEN
+=========================== */
+
+window.addEventListener("load", () => {
+
+    document.body.classList.add("loaded");
+
+});
+
+
+/* ===========================
+   MOUSE GLOW
+=========================== */
+
+const glow = document.createElement("div");
+
+glow.style.position = "fixed";
+glow.style.width = "260px";
+glow.style.height = "260px";
+glow.style.borderRadius = "50%";
+glow.style.pointerEvents = "none";
+glow.style.background =
+    "radial-gradient(circle, rgba(0,200,5,.16), transparent 70%)";
+glow.style.filter = "blur(35px)";
+glow.style.zIndex = "0";
+
+document.body.appendChild(glow);
+
+window.addEventListener("mousemove", (e) => {
+
+    glow.style.left = (e.clientX - 130) + "px";
+    glow.style.top = (e.clientY - 130) + "px";
+
+});
+
+
+/* ===========================
+   ACTIVE NAVIGATION
+=========================== */
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach((section) => {
+
+        const top = section.offsetTop - 120;
+        const height = section.offsetHeight;
+
+        if (scrollY >= top && scrollY < top + height) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navLinks.forEach((link) => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+/* ===========================
+   BUTTON RIPPLE
+=========================== */
+
+document.querySelectorAll("button, .tool-btn, .primary-btn, .cta-primary")
+.forEach(button => {
+
+    button.addEventListener("click", function (e) {
+
+        const ripple = document.createElement("span");
+
+        ripple.style.position = "absolute";
+        ripple.style.width = "12px";
+        ripple.style.height = "12px";
+        ripple.style.background = "rgba(255,255,255,.35)";
+        ripple.style.borderRadius = "50%";
+        ripple.style.transform = "scale(0)";
+        ripple.style.pointerEvents = "none";
+        ripple.style.left = e.offsetX + "px";
+        ripple.style.top = e.offsetY + "px";
+        ripple.style.animation = "ripple .6s ease-out";
+
+        this.style.position = "relative";
+        this.style.overflow = "hidden";
+
+        this.appendChild(ripple);
+
+        setTimeout(() => {
+
+            ripple.remove();
+
+        }, 600);
+
+    });
+
+});
+
+
+/* ===========================
+   CONSOLE MESSAGE
+=========================== */
+
+console.log("%cCLOAK AI", "color:#00C805;font-size:26px;font-weight:bold;");
+console.log("%cBuilt for Robinhood Chain", "color:white;font-size:14px;");
