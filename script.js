@@ -3,158 +3,123 @@ const button = document.querySelector(".search button");
 const cards = document.querySelectorAll(".card");
 const output = document.getElementById("ai-output");
 
-const templates = {
-  token: (theme) => `
-<h2>🚀 Token Generator</h2>
+function generateToken(prompt) {
+
+    const clean = prompt.trim();
+
+    const ticker = clean
+        .replace(/[^a-zA-Z0-9 ]/g, "")
+        .split(" ")
+        .map(word => word.charAt(0))
+        .join("")
+        .toUpperCase();
+
+    return `
+<h2 style="color:#00C805;">🚀 Token Generator</h2>
 
 <h3>Token Name</h3>
-<p>${theme} Coin</p>
+<p>${clean}</p>
 
 <h3>Ticker</h3>
-<p>$${theme.replace(/\s+/g, "").substring(0,6).toUpperCase()}</p>
+<p>$${ticker}</p>
 
 <h3>Description</h3>
-<p>A community-driven meme token inspired by ${theme}, built for Robinhood Chain.</p>
+<p>${clean} is a community-driven meme token built for Robinhood Chain, designed to bring fun, creativity and strong community engagement.</p>
 
 <h3>Narrative</h3>
-<p>${theme} brings together builders, traders, and meme lovers into one growing community.</p>
+<p>${clean} combines meme culture with Robinhood Chain, creating a recognizable and shareable brand for builders and traders.</p>
+
+<h3>Utility</h3>
+<ul>
+<li>Community Rewards</li>
+<li>Meme Campaigns</li>
+<li>AI Branding</li>
+<li>Future Ecosystem Expansion</li>
+</ul>
 
 <h3>Roadmap</h3>
-<p>
-Phase 1 - Launch<br>
-Phase 2 - Community Growth<br>
-Phase 3 - Marketing Campaign<br>
-Phase 4 - Ecosystem Expansion
-</p>
-`,
-
-  whitepaper: `
-<h2>📄 Whitepaper</h2>
-<p>Professional whitepaper generation will be available in the next update.</p>
-`,
-
-  roadmap: `
-<h2>🗺 Roadmap</h2>
-<p>Roadmap generator will be available soon.</p>
-`,
-
-  brand: `
-<h2>🎨 Brand Kit</h2>
-<p>Brand generator will be available soon.</p>
-`,
-
-  xthread: `
-<h2>🐦 X Thread</h2>
-<p>X Thread generator will be available soon.</p>
-`,
-
-  checklist: `
-<h2>✅ Launch Checklist</h2>
 <ul>
-<li>Create Website</li>
-<li>Create X Account</li>
-<li>Create Telegram</li>
-<li>Deploy Token</li>
-<li>Launch Community</li>
+<li>Phase 1 — Branding</li>
+<li>Phase 2 — Community</li>
+<li>Phase 3 — Marketing</li>
+<li>Phase 4 — Expansion</li>
 </ul>
-`
-};
 
-button.onclick = generate;
+<h3>First X Post</h3>
+<p>
+Introducing <strong>${clean}</strong> ($${ticker}) 🚀<br><br>
+Built for Robinhood Chain.<br>
+Powered by community.<br>
+Ready to build the next meme movement.<br><br>
 
-input.addEventListener("keydown", function(e){
-  if(e.key==="Enter"){
-    generate();
-  }
+#RobinhoodChain #Memecoin
+</p>
+`;
+}
+
+function generate() {
+
+    const prompt = input.value.trim();
+
+    if(prompt===""){
+
+        output.innerHTML="<p>Please enter a prompt.</p>";
+
+        return;
+
+    }
+
+    output.innerHTML = generateToken(prompt);
+
+}
+
+button.addEventListener("click", generate);
+
+input.addEventListener("keypress", function(e){
+
+    if(e.key==="Enter"){
+
+        generate();
+
+    }
+
 });
 
 cards.forEach(card=>{
 
-  card.onclick=()=>{
+    card.addEventListener("click",()=>{
 
-    const title=card.querySelector("h3").innerText;
+        input.value = card.querySelector("h3").innerText;
 
-    input.value=title;
+        generate();
 
-    generate(title);
-
-  }
+    });
 
 });
 
-function generate(type=""){
+const copyBtn = document.getElementById("copyBtn");
 
-  const value=input.value.trim();
-
-  if(value===""){
-
-    output.innerHTML="<h3>Please enter a prompt.</h3>";
-
-    return;
-
-  }
-
-  const lower=value.toLowerCase();
-
-  if(lower.includes("white")){
-
-    output.innerHTML=templates.whitepaper;
-
-    return;
-
-  }
-
-  if(lower.includes("road")){
-
-    output.innerHTML=templates.roadmap;
-
-    return;
-
-  }
-
-  if(lower.includes("brand")){
-
-    output.innerHTML=templates.brand;
-
-    return;
-
-  }
-
-  if(lower.includes("thread")){
-
-    output.innerHTML=templates.xthread;
-
-    return;
-
-  }
-
-  if(lower.includes("check")){
-
-    output.innerHTML=templates.checklist;
-
-    return;
-
-  }
-
-  output.innerHTML=templates.token(value);
-
-}
-const copyBtn=document.getElementById("copyBtn");
-const downloadBtn=document.getElementById("downloadBtn");
+if(copyBtn){
 
 copyBtn.onclick=()=>{
 
 navigator.clipboard.writeText(output.innerText);
 
-copyBtn.innerText="✅ Copied";
+copyBtn.innerHTML="✅ Copied";
 
 setTimeout(()=>{
 
-copyBtn.innerText="📋 Copy";
+copyBtn.innerHTML="📋 Copy";
 
 },1500);
 
+};
+
 }
+
+const downloadBtn=document.getElementById("downloadBtn");
+
+if(downloadBtn){
 
 downloadBtn.onclick=()=>{
 
@@ -167,5 +132,7 @@ link.href=URL.createObjectURL(blob);
 link.download="cloak-ai-output.txt";
 
 link.click();
+
+};
 
 }
