@@ -5,123 +5,367 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+
 body{
-    background:#050505;
+    background:
+    radial-gradient(circle at top, #12351f 0%, #050505 45%);
     color:white;
+    overflow-x:hidden;
 }
 
+
+
 header{
+
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:25px 8%;
+
 }
 
+
+
 .brand{
+
     display:flex;
     align-items:center;
     gap:12px;
     font-size:22px;
     font-weight:bold;
+
 }
 
+
+
 .brand img{
+
     width:45px;
     height:45px;
     object-fit:contain;
+
 }
 
 
+
+
+.social a{
+
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    opacity:.8;
+    transition:.3s;
+
+}
+
+
+
+.social a:hover{
+
+    color:#00ff66;
+
+}
+
+
+
+
+
 .hero{
-    min-height:85vh;
+
+    min-height:80vh;
     padding:40px 8%;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:40px;
+
 }
+
+
 
 
 .content{
+
     max-width:600px;
+
 }
+
+
 
 
 h1{
-    font-size:60px;
-    line-height:1.1;
+
+    font-size:65px;
+    line-height:1.05;
+
 }
+
 
 
 h1 span{
+
     color:#00ff66;
+    text-shadow:0 0 20px #00ff66;
+
 }
 
 
-p{
-    margin-top:20px;
+
+
+.content p{
+
+    margin-top:25px;
     color:#aaa;
     font-size:18px;
     line-height:1.6;
+
 }
+
+
 
 
 .btn{
+
     margin-top:30px;
+
 }
+
 
 
 .btn a{
+
     display:inline-block;
-    padding:14px 25px;
+    padding:14px 28px;
+    margin-right:10px;
     background:#00ff66;
-    color:black;
+    color:#000;
     text-decoration:none;
     border-radius:30px;
     font-weight:bold;
+    transition:.3s;
+
 }
+
+
+
+.btn a:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
 
 
 .hero-image img{
-    width:420px;
+
+    width:430px;
     max-width:100%;
-    display:block;
-    filter:drop-shadow(0 0 40px #00ff6655);
+    filter:
+    drop-shadow(0 0 30px #00ff66);
+
+    animation:float 4s ease-in-out infinite;
+
 }
 
 
-.card{
 
-    margin:20px 8%;
+
+@keyframes float{
+
+    50%{
+
+        transform:translateY(-15px);
+
+    }
+
+}
+
+
+
+
+
+.token-section{
+
+    padding:60px 8%;
+    text-align:center;
+
+}
+
+
+
+.token-section h2{
+
+    font-size:42px;
+    color:#00ff66;
+
+}
+
+
+
+.subtitle{
+
+    color:#aaa;
+    margin-top:10px;
+
+}
+
+
+
+
+.token-grid{
+
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+
+}
+
+
+
+
+.token-card{
+
+    background:rgba(255,255,255,.05);
+    border:1px solid #222;
     padding:25px;
-    background:#111;
     border-radius:20px;
+    backdrop-filter:blur(10px);
+    transition:.3s;
+
+}
+
+
+
+.token-card:hover{
+
+    transform:translateY(-8px);
+    border-color:#00ff66;
+
+}
+
+
+
+
+.token-card h3{
+
+    color:#00ff66;
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+.contract-box{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+
+}
+
+
+
+
+.contract-box span{
+
+    font-size:13px;
+    color:#aaa;
+    overflow:hidden;
+
+}
+
+
+
+
+.contract-box button{
+
+    background:#00ff66;
+    border:none;
+    padding:8px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+
+}
+
+
+
+
+.bottom-card{
+
+    margin:40px 8%;
+    padding:35px;
+    text-align:center;
+    background:#111;
+    border-radius:25px;
     border:1px solid #222;
 
 }
 
 
-.card h2{
+
+.bottom-card h2{
+
     color:#00ff66;
+
 }
+
 
 
 
 @media(max-width:900px){
 
-.hero{
-    flex-direction:column;
-    text-align:center;
+
+header{
+
+    padding:20px;
+
 }
 
 
+.social{
+
+    display:none;
+
+}
+
+
+
+.hero{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+
+
 h1{
-    font-size:40px;
+
+    font-size:42px;
+
+}
+
+
+
+.token-grid{
+
+    grid-template-columns:1fr;
+
 }
 
 
 .hero-image img{
+
     width:320px;
+
 }
+
 
 }
