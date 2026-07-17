@@ -15,7 +15,6 @@ window.addEventListener("load",()=>{
 
             loader.style.opacity="0";
 
-
             setTimeout(()=>{
 
                 loader.style.display="none";
@@ -39,22 +38,19 @@ window.addEventListener("load",()=>{
 
 function copyCA(){
 
-
     const contract = document.getElementById("contract");
 
 
     if(contract){
 
-
         navigator.clipboard.writeText(contract.innerText);
-
 
         alert("Contract copied!");
 
     }
 
-
 }
+
 
 
 
@@ -70,16 +66,24 @@ window.addEventListener("scroll",()=>{
     const navbar = document.getElementById("navbar");
 
 
-    if(window.scrollY > 50){
+    if(navbar){
 
 
-        navbar.style.borderBottom="1px solid #222";
+        if(window.scrollY > 50){
 
 
-    }else{
+            navbar.style.borderBottom =
+            "1px solid #222";
 
 
-        navbar.style.borderBottom="none";
+        }else{
+
+
+            navbar.style.borderBottom =
+            "none";
+
+
+        }
 
 
     }
@@ -92,33 +96,35 @@ window.addEventListener("scroll",()=>{
 
 
 
-// SIMPLE REVEAL ANIMATION
+
+// REVEAL ANIMATION
 
 
-const reveal = document.querySelectorAll(
-    ".token-card, .community, .token-section"
+const animated = document.querySelectorAll(
+".market-card, .token-card, .about, .community"
 );
 
 
 
-const observer = new IntersectionObserver((items)=>{
+const observer = new IntersectionObserver((entries)=>{
 
 
-    items.forEach(item=>{
+entries.forEach(entry=>{
 
 
-        if(item.isIntersecting){
+    if(entry.isIntersecting){
 
 
-            item.target.style.opacity="1";
+        entry.target.style.opacity="1";
 
-            item.target.style.transform="translateY(0)";
-
-
-        }
+        entry.target.style.transform=
+        "translateY(0)";
 
 
-    });
+    }
+
+
+});
 
 
 },{threshold:.2});
@@ -127,17 +133,34 @@ const observer = new IntersectionObserver((items)=>{
 
 
 
-reveal.forEach(el=>{
+animated.forEach(item=>{
 
 
-    el.style.opacity="0";
+    item.style.opacity="0";
 
-    el.style.transform="translateY(40px)";
+    item.style.transform=
+    "translateY(40px)";
 
-    el.style.transition="1s";
+
+    item.style.transition=
+    "all .8s ease";
 
 
-    observer.observe(el);
+    observer.observe(item);
 
 
 });
+
+
+
+
+
+
+
+// FUTURE LIVE DATA PLACE
+
+// Nanti Dexscreener API akan dimasukkan disini
+// Price
+// Market Cap
+// Volume
+// Liquidity
