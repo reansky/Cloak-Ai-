@@ -345,3 +345,40 @@ min-height:250px;
 line-height:1.9;
 
 }
+.output-actions{
+
+display:flex;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+.output-actions button{
+
+background:#00C805;
+
+color:black;
+
+border:none;
+
+padding:14px 20px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.output-actions button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 0 18px rgba(0,200,5,.4);
+
+}
