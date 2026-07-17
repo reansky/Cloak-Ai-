@@ -1,20 +1,29 @@
-console.log("Robinhood Cloak $RHC website loaded");
+console.log("Robinhood Cloak $RHC loaded");
 
 
 
 // LOADER
 
-window.addEventListener("load", ()=>{
+window.addEventListener("load",()=>{
 
     const loader = document.getElementById("loader");
+
 
     if(loader){
 
         setTimeout(()=>{
 
-            loader.style.display="none";
+            loader.style.opacity="0";
 
-        },2500);
+
+            setTimeout(()=>{
+
+                loader.style.display="none";
+
+            },500);
+
+
+        },2000);
 
     }
 
@@ -24,63 +33,35 @@ window.addEventListener("load", ()=>{
 
 
 
-// SCROLL REVEAL
+
+// COPY CONTRACT
 
 
-const revealElements = document.querySelectorAll(
-    ".about, .token-section, .roadmap, .community, .token-card, .road-grid div"
-);
+function copyCA(){
 
 
-
-const revealObserver = new IntersectionObserver((entries)=>{
-
-
-    entries.forEach((entry)=>{
+    const contract = document.getElementById("contract");
 
 
-        if(entry.isIntersecting){
-
-            entry.target.style.opacity="1";
-            entry.target.style.transform="translateY(0)";
-
-        }
+    if(contract){
 
 
-    });
+        navigator.clipboard.writeText(contract.innerText);
 
 
+        alert("Contract copied!");
 
-},{
-    threshold:0.15
-});
-
+    }
 
 
-
-
-revealElements.forEach((element)=>{
-
-
-    element.style.opacity="0";
-
-    element.style.transform="translateY(40px)";
-
-    element.style.transition="1s";
-
-
-    revealObserver.observe(element);
-
-
-});
+}
 
 
 
 
 
 
-
-// NAVBAR EFFECT
+// NAVBAR SCROLL EFFECT
 
 
 window.addEventListener("scroll",()=>{
@@ -91,11 +72,15 @@ window.addEventListener("scroll",()=>{
 
     if(window.scrollY > 50){
 
+
         navbar.style.borderBottom="1px solid #222";
+
 
     }else{
 
+
         navbar.style.borderBottom="none";
+
 
     }
 
@@ -107,26 +92,52 @@ window.addEventListener("scroll",()=>{
 
 
 
-
-// COPY CONTRACT READY
-
-
-function copyCA(){
+// SIMPLE REVEAL ANIMATION
 
 
-const contract = document.getElementById("contract");
+const reveal = document.querySelectorAll(
+    ".token-card, .community, .token-section"
+);
 
 
-if(contract){
+
+const observer = new IntersectionObserver((items)=>{
 
 
-navigator.clipboard.writeText(contract.innerText);
+    items.forEach(item=>{
 
 
-alert("Contract copied!");
+        if(item.isIntersecting){
 
 
-}
+            item.target.style.opacity="1";
+
+            item.target.style.transform="translateY(0)";
 
 
-}
+        }
+
+
+    });
+
+
+},{threshold:.2});
+
+
+
+
+
+reveal.forEach(el=>{
+
+
+    el.style.opacity="0";
+
+    el.style.transform="translateY(40px)";
+
+    el.style.transition="1s";
+
+
+    observer.observe(el);
+
+
+});
