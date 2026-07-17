@@ -1,201 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robinhood Cloak $RHC</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<title>Robinhood Cloak $RHC</title>
 
-    body {
-      background: #050505;
-      color: white;
-      overflow-x: hidden;
-    }
+<style>
 
-    header {
-      width: 100%;
-      padding: 25px 8%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 22px;
-      font-weight: bold;
-    }
+body{
+    background:#050505;
+    color:white;
+}
 
-    .brand img {
-      width: 45px;
-      height: 45px;
-      object-fit: contain;
-    }
 
-    .links a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      opacity: .8;
-    }
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+}
 
-    .hero {
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 40px 8%;
-      gap: 40px;
-    }
 
-    .content {
-      max-width: 550px;
-    }
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:22px;
+    font-weight:bold;
+}
 
-    h1 {
-      font-size: 60px;
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
 
-    h1 span {
-      color: #00ff66;
-    }
+.brand img{
+    width:45px;
+    height:45px;
+    object-fit:contain;
+}
 
-    p {
-      color: #bdbdbd;
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-    }
 
-    .buttons a {
-      display: inline-block;
-      padding: 14px 25px;
-      border-radius: 30px;
-      margin-right: 10px;
-      text-decoration: none;
-      color: black;
-      background: #00ff66;
-      font-weight: bold;
-    }
+.hero{
+    min-height:85vh;
+    padding:40px 8%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-    .buttons a.secondary {
-      background: transparent;
-      color: white;
-      border: 1px solid #333;
-    }
 
-    .hero-image img {
-      width: 430px;
-      max-width: 100%;
-      filter: drop-shadow(0 0 40px rgba(0,255,100,.3));
-    }
+.content{
+    max-width:550px;
+}
 
-    .card {
-      margin: 20px 8%;
-      padding: 25px;
-      background: #101010;
-      border-radius: 20px;
-      border: 1px solid #222;
-    }
 
-    .card h2 {
-      color:#00ff66;
-      margin-bottom:10px;
-    }
+h1{
+    font-size:60px;
+}
 
-    @media(max-width:900px){
 
-      header {
-        padding:20px;
-      }
+h1 span{
+    color:#00ff66;
+}
 
-      .hero {
-        flex-direction:column;
-        text-align:center;
-        padding:30px 20px;
-      }
 
-      h1 {
-        font-size:42px;
-      }
+p{
+    margin-top:20px;
+    color:#aaa;
+    font-size:18px;
+    line-height:1.6;
+}
 
-      .links {
-        display:none;
-      }
 
-      .hero-image img {
-        width:320px;
-      }
-    }
+.btn{
+    margin-top:30px;
+}
 
-  </style>
+
+.btn a{
+    display:inline-block;
+    padding:14px 25px;
+    background:#00ff66;
+    color:black;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+
+.hero-image img{
+
+    width:420px;
+    max-width:100%;
+    height:auto;
+    display:block;
+
+}
+
+
+.card{
+
+    margin:20px 8%;
+    background:#111;
+    padding:25px;
+    border-radius:20px;
+
+}
+
+
+.card h2{
+    color:#00ff66;
+}
+
+
+
+@media(max-width:900px){
+
+.hero{
+
+    flex-direction:column;
+    text-align:center;
+
+}
+
+
+h1{
+
+    font-size:40px;
+
+}
+
+
+.hero-image img{
+
+    margin-top:40px;
+
+}
+
+}
+
+
+</style>
+
 </head>
+
 
 <body>
 
-<header>
-  <div class="brand">
-    <img src="logo.png" alt="logo">
-    <span>Robinhood Cloak</span>
-  </div>
 
-  <div class="links">
-    <a href="#">X</a>
-    <a href="#">Dexscreener</a>
-    <a href="#">Telegram</a>
-  </div>
+<header>
+
+<div class="brand">
+
+<img src="./logo.png">
+
+<span>Robinhood Cloak</span>
+
+</div>
+
 </header>
+
 
 
 <section class="hero">
 
-  <div class="content">
 
-    <h1>
-      The Future Of
-      <span>$RHC</span>
-      On Robinhood Chain
-    </h1>
+<div class="content">
 
-    <p>
-      Robinhood Cloak is a community driven meme token built for the next generation of Web3 users.
-      Simple, fast and powered by the Robinhood ecosystem.
-    </p>
+<h1>
+The Future Of
+<span>$RHC</span>
+</h1>
 
 
-    <div class="buttons">
-      <a href="#">Buy $RHC</a>
-      <a href="#" class="secondary">Contract</a>
-    </div>
-
-  </div>
+<p>
+A community driven meme token built for the Robinhood Chain ecosystem.
+Memes, community and Web3 culture combined.
+</p>
 
 
-  <div>
-    <img src="hero.png" alt="hero.png">
-  </div>
-  </div>
+<div class="btn">
+
+<a href="#">
+Buy $RHC
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<div class="hero-image">
+
+<img src="./hero.png">
+
+</div>
+
 
 </section>
 
 
+
 <div class="card">
-  <h2>Robinhood Cloak $RHC</h2>
-  <p>
-    Community. Memes. Innovation. One cloak for the whole Robinhood Chain.
-  </p>
+
+<h2>
+Robinhood Cloak $RHC
+</h2>
+
+<p>
+Chain: Robinhood Chain<br>
+Contract: Coming Soon
+</p>
+
 </div>
+
 
 
 </body>
