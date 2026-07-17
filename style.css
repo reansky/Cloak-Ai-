@@ -6,12 +6,38 @@
 }
 
 
+html{
+    scroll-behavior:smooth;
+}
+
+
 body{
-    background:
-    radial-gradient(circle at top, #12351f 0%, #050505 45%);
+
+    background:#030303;
     color:white;
     overflow-x:hidden;
+
 }
+
+
+
+/* BACKGROUND EFFECT */
+
+.bg-glow{
+
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00ff66;
+    opacity:.12;
+    filter:blur(150px);
+    top:-200px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
+
+}
+
 
 
 
@@ -23,6 +49,7 @@ header{
     padding:25px 8%;
 
 }
+
 
 
 
@@ -38,6 +65,7 @@ header{
 
 
 
+
 .brand img{
 
     width:45px;
@@ -45,6 +73,7 @@ header{
     object-fit:contain;
 
 }
+
 
 
 
@@ -73,14 +102,15 @@ header{
 
 .hero{
 
-    min-height:80vh;
+    min-height:85vh;
     padding:40px 8%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:40px;
+    gap:50px;
 
 }
+
 
 
 
@@ -96,17 +126,20 @@ header{
 
 h1{
 
-    font-size:65px;
+    font-size:70px;
     line-height:1.05;
 
 }
 
 
 
+
 h1 span{
 
     color:#00ff66;
-    text-shadow:0 0 20px #00ff66;
+    text-shadow:
+    0 0 15px #00ff66,
+    0 0 40px #00ff66;
 
 }
 
@@ -118,7 +151,7 @@ h1 span{
     margin-top:25px;
     color:#aaa;
     font-size:18px;
-    line-height:1.6;
+    line-height:1.7;
 
 }
 
@@ -136,10 +169,10 @@ h1 span{
 .btn a{
 
     display:inline-block;
-    padding:14px 28px;
+    padding:15px 30px;
     margin-right:10px;
     background:#00ff66;
-    color:#000;
+    color:black;
     text-decoration:none;
     border-radius:30px;
     font-weight:bold;
@@ -152,20 +185,20 @@ h1 span{
 .btn a:hover{
 
     transform:translateY(-5px);
+    box-shadow:0 0 25px #00ff66;
 
 }
 
 
 
 
+
 .hero-image img{
 
-    width:430px;
+    width:450px;
     max-width:100%;
-    filter:
-    drop-shadow(0 0 30px #00ff66);
-
-    animation:float 4s ease-in-out infinite;
+    animation:float 5s infinite ease-in-out;
+    filter:drop-shadow(0 0 35px #00ff66);
 
 }
 
@@ -176,7 +209,7 @@ h1 span{
 
     50%{
 
-        transform:translateY(-15px);
+        transform:translateY(-20px);
 
     }
 
@@ -186,37 +219,49 @@ h1 span{
 
 
 
-.token-section{
 
-    padding:60px 8%;
+
+.about,
+.token-section,
+.roadmap,
+.community{
+
+    margin:80px 8%;
     text-align:center;
 
 }
 
 
 
-.token-section h2{
+
+
+.about p,
+.community p{
+
+    max-width:750px;
+    margin:20px auto;
+    color:#aaa;
+    line-height:1.7;
+
+}
+
+
+
+
+h2{
 
     font-size:42px;
     color:#00ff66;
+    margin-bottom:25px;
 
 }
 
-
-
-.subtitle{
-
-    color:#aaa;
-    margin-top:10px;
-
-}
 
 
 
 
 .token-grid{
 
-    margin-top:40px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:20px;
@@ -228,10 +273,10 @@ h1 span{
 
 .token-card{
 
+    padding:30px;
     background:rgba(255,255,255,.05);
     border:1px solid #222;
-    padding:25px;
-    border-radius:20px;
+    border-radius:25px;
     backdrop-filter:blur(10px);
     transition:.3s;
 
@@ -239,9 +284,10 @@ h1 span{
 
 
 
+
 .token-card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-10px);
     border-color:#00ff66;
 
 }
@@ -260,49 +306,23 @@ h1 span{
 
 
 
-.contract-box{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-
-}
 
 
+.road-grid{
 
-
-.contract-box span{
-
-    font-size:13px;
-    color:#aaa;
-    overflow:hidden;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 
 }
 
 
 
 
-.contract-box button{
+.road-grid div{
 
-    background:#00ff66;
-    border:none;
-    padding:8px 15px;
-    border-radius:20px;
-    cursor:pointer;
-    font-weight:bold;
-
-}
-
-
-
-
-.bottom-card{
-
-    margin:40px 8%;
-    padding:35px;
-    text-align:center;
     background:#111;
+    padding:30px;
     border-radius:25px;
     border:1px solid #222;
 
@@ -310,11 +330,35 @@ h1 span{
 
 
 
-.bottom-card h2{
+.road-grid h3{
 
     color:#00ff66;
+    margin-bottom:15px;
 
 }
+
+
+
+.road-grid p{
+
+    color:#aaa;
+
+}
+
+
+
+
+
+footer{
+
+    text-align:center;
+    padding:40px;
+    color:#777;
+
+}
+
+
+
 
 
 
@@ -345,10 +389,16 @@ header{
 }
 
 
-
 h1{
 
     font-size:42px;
+
+}
+
+
+.hero-image img{
+
+    width:320px;
 
 }
 
@@ -361,9 +411,10 @@ h1{
 }
 
 
-.hero-image img{
 
-    width:320px;
+.road-grid{
+
+    grid-template-columns:1fr;
 
 }
 
