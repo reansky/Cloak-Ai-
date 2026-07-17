@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cloak AI</title>
+<title>CLOAK AI</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,45 +15,39 @@
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<header>
-
-<nav class="navbar">
+<header class="navbar">
 
 <div class="logo">
 
-<img src="assets/logo.png">
+<img src="assets/logo.png" alt="logo">
 
 <h2>CLOAK <span>AI</span></h2>
 
 </div>
 
+<nav>
+
 <ul>
 
 <li><a href="#">Home</a></li>
 
-<li><a href="#tools">AI Workspace</a></li>
+<li><a href="#tools">Tools</a></li>
 
-<li><a href="#builder">Tools</a></li>
-
-<li><a href="#docs">Docs</a></li>
+<li><a href="#workspace">Workspace</a></li>
 
 <li><a href="#about">About</a></li>
 
 </ul>
 
-<button id="launchBtn">
-
-🚀 Launch App
-
-</button>
-
 </nav>
+
+<a href="#workspace" class="launch-btn">Launch App</a>
 
 </header>
 
@@ -63,43 +57,31 @@
 
 <div class="badge">
 
-🍃 Built for Robinhood Chain
+🟢 Built for Robinhood Chain
 
 </div>
 
 <h1>
 
-AI-Powered Tools
-
-<span>
-
-for Crypto Builders
-
-</span>
+AI-Powered Tools for Crypto Builders
 
 </h1>
 
 <p>
 
-Create tokens, whitepapers,
-
-branding, launch strategies,
-
-and viral X content
-
-using one intelligent assistant.
+Create token branding, whitepapers, launch strategies, memes, X content and more with one intelligent AI workspace.
 
 </p>
 
 <div class="hero-buttons">
 
-<button class="primary">
+<button class="primary-btn">
 
-Launch App
+Launch Workspace
 
 </button>
 
-<button class="secondary">
+<button class="secondary-btn">
 
 Explore Tools
 
@@ -117,13 +99,13 @@ Explore Tools
 
 <div>
 
-🛡 Built for Builders
+🛠 Builder Focused
 
 </div>
 
 <div>
 
-🍃 Robinhood Chain
+🟢 Robinhood Chain
 
 </div>
 
@@ -133,84 +115,130 @@ Explore Tools
 
 <div class="hero-right">
 
-<img src="assets/logo.png">
+<img src="assets/logo.png" alt="Cloak AI">
 
 </div>
 
 </section>
 
-<section id="tools" class="section-title">
+<section class="section-title" id="tools">
 
-<h4>AI TOOLS</h4>
+<span>AI TOOLS</span>
 
-<h2>
-
-Everything You Need to Build
-
-</h2>
+<h2>Everything You Need to Build</h2>
 
 <p>
-
-Powerful AI tools to help you launch
-
-your next crypto project.
-
+Professional AI tools designed specifically for Robinhood Chain builders.
 </p>
 
 </section>
 
-  <section id="builder" class="tools-grid">
+<section class="tools-grid">
 
 <div class="tool-card">
+
 <div class="icon">🪙</div>
+
 <h3>Token Generator</h3>
-<p>Create token names, tickers, narratives and tokenomics instantly.</p>
-<button class="tool-btn">Generate →</button>
+
+<p>
+Generate token names, ticker symbols, narratives, tokenomics, utilities and launch ideas in seconds.
+</p>
+
+<button class="tool-btn" onclick="generateTool('token')">
+Generate
+</button>
+
 </div>
 
 <div class="tool-card">
+
 <div class="icon">📄</div>
+
 <h3>Whitepaper AI</h3>
-<p>Generate professional whitepapers complete with vision and roadmap.</p>
-<button class="tool-btn">Generate →</button>
+
+<p>
+Create professional whitepapers including vision, mission, roadmap and token utility.
+</p>
+
+<button class="tool-btn" onclick="generateTool('whitepaper')">
+Generate
+</button>
+
 </div>
 
 <div class="tool-card">
+
 <div class="icon">🎨</div>
+
 <h3>Brand Kit</h3>
-<p>Create logos, color palettes, banner prompts and brand identity.</p>
-<button class="tool-btn">Generate →</button>
+
+<p>
+Generate logo ideas, branding concepts, colors, slogans and complete project identity.
+</p>
+
+<button class="tool-btn" onclick="generateTool('brand')">
+Generate
+</button>
+
 </div>
 
 <div class="tool-card">
+
 <div class="icon">🐦</div>
+
 <h3>X Content</h3>
-<p>Generate viral X threads, announcements and engagement posts.</p>
-<button class="tool-btn">Generate →</button>
+
+<p>
+Generate viral X threads, announcements, memes and engagement posts automatically.
+</p>
+
+<button class="tool-btn" onclick="generateTool('twitter')">
+Generate
+</button>
+
 </div>
 
 <div class="tool-card">
+
 <div class="icon">🗺️</div>
+
 <h3>Roadmap Builder</h3>
-<p>Create a launch roadmap with milestones and ecosystem goals.</p>
-<button class="tool-btn">Generate →</button>
+
+<p>
+Generate launch roadmap from concept to exchange listing with structured milestones.
+</p>
+
+<button class="tool-btn" onclick="generateTool('roadmap')">
+Generate
+</button>
+
 </div>
 
 <div class="tool-card">
+
 <div class="icon">✅</div>
+
 <h3>Launch Checklist</h3>
-<p>Everything you need before deploying and launching your token.</p>
-<button class="tool-btn">Generate →</button>
+
+<p>
+Never miss an important launch step. Generate a complete launch checklist instantly.
+</p>
+
+<button class="tool-btn" onclick="generateTool('checklist')">
+Generate
+</button>
+
 </div>
 
 </section>
 
-<section class="workspace">
+  <section class="workspace" id="workspace">
 
-<h2>Cloak AI Workspace</h2>
+<h2>AI Workspace</h2>
 
 <p>
-Ask anything about your crypto project and let Cloak AI help you build.
+Describe what you want to create and let Cloak AI generate professional crypto content.
 </p>
 
 <div class="workspace-box">
@@ -218,13 +246,11 @@ Ask anything about your crypto project and let Cloak AI help you build.
 <input
 type="text"
 id="prompt"
-placeholder="Example: Create a Robinhood penguin memecoin with tokenomics..."
+placeholder="Example: Create a meme token about Robinhood Chain..."
 >
 
-<button id="generateBtn">
-
+<button onclick="generateAI()">
 Generate
-
 </button>
 
 </div>
@@ -234,37 +260,23 @@ Generate
 <h3>AI Output</h3>
 
 <p>
-
 Your generated content will appear here...
-
 </p>
 
 </div>
 
 </section>
 
-<section class="bottom-banner">
+<section class="bottom-banner" id="about">
 
 <div>
 
 <h2>
-
-Built for <span>Robinhood Chain</span>
-
+Build Faster with <span>CLOAK AI</span>
 </h2>
 
 <p>
-
-Cloak AI helps founders create branding,
-
-whitepapers,
-
-roadmaps,
-
-marketing,
-
-and launch materials in seconds.
-
+Everything you need to launch a Robinhood Chain project from one workspace.
 </p>
 
 </div>
@@ -273,7 +285,11 @@ and launch materials in seconds.
 
 <span>Robinhood Chain</span>
 
-<span>OpenRouter AI</span>
+<span>AI Powered</span>
+
+<span>Crypto Builder</span>
+
+<span>OpenRouter API</span>
 
 </div>
 
@@ -285,9 +301,15 @@ and launch materials in seconds.
 
 <div class="footer-logo">
 
-<img src="assets/logo.png" alt="Cloak AI">
+<img src="assets/logo.png" alt="logo">
+
+<div>
 
 <h2>CLOAK <span>AI</span></h2>
+
+<p>AI Workspace for Robinhood Chain Builders</p>
+
+</div>
 
 </div>
 
@@ -295,19 +317,13 @@ and launch materials in seconds.
 
 <a href="#">Home</a>
 
-<a href="#">Tools</a>
+<a href="#tools">Tools</a>
 
-<a href="#">Docs</a>
+<a href="#workspace">Workspace</a>
 
 <a href="#">Privacy</a>
 
 </div>
-
-<p>
-
-© 2026 Cloak AI. Built for Robinhood Chain.
-
-</p>
 
 </div>
 
@@ -316,5 +332,4 @@ and launch materials in seconds.
 <script src="script.js"></script>
 
 </body>
-
 </html>
