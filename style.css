@@ -1242,3 +1242,76 @@ border-radius:999px;
 background:#111;
 
 }
+
+/* ===========================
+PROGRESS BAR
+=========================== */
+
+#progress-bar{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height:3px;
+
+width:0%;
+
+background:#00C805;
+
+z-index:99999;
+
+box-shadow:0 0 20px #00C805;
+
+transition:.15s;
+
+}
+
+
+/* ===========================
+BACK TO TOP
+=========================== */
+
+#backToTop{
+
+position:fixed;
+
+right:25px;
+
+bottom:100px;
+
+width:52px;
+
+height:52px;
+
+border:none;
+
+border-radius:50%;
+
+background:#00C805;
+
+color:#000;
+
+font-size:20px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+transition:.3s;
+
+box-shadow:0 0 25px rgba(0,200,5,.35);
+
+}
+
+#backToTop:hover{
+
+transform:translateY(-5px);
+
+}
