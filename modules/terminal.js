@@ -1,7 +1,9 @@
 /* =====================================================
    THE CLOAK TERMINAL
+   Robinhood Cloak $RHC
    Version : 1.0.0
 ===================================================== */
+
 
 window.Terminal = {
 
@@ -11,13 +13,13 @@ window.Terminal = {
 
     isOpen: false,
 
-    isTyping: false,
-
     history: [],
 
     historyIndex: -1,
 
+
     commands: {},
+
 
     elements: {
 
@@ -33,496 +35,764 @@ window.Terminal = {
 
     },
 
+
     bootLines: [
 
         "INITIALIZING ROBINHOOD CLOAK...",
+
         "",
+
         "Loading AI Engine...",
+
         "Loading Command Registry...",
-        "Loading Market Module...",
+
         "Loading Security Layer...",
+
         "",
+
         "SYSTEM ONLINE",
+
         "",
+
         "Welcome, Cloaked One.",
+
         "",
+
         "Type 'help' to begin.",
+
         ""
 
     ],
 
-    init() {
 
-        if (this.initialized) return;
+
+    init(){
+
+        if(this.initialized) return;
+
 
         this.cache();
 
+        this.events();
+
         this.registerCommands();
 
-        this.events();
 
         this.initialized = true;
 
-        console.log("✅ The Cloak Terminal Ready");
+
+        console.log(
+            "✅ The Cloak Terminal Online"
+        );
 
     },
 
-    cache() {
 
-        this.elements.overlay = document.getElementById("terminal-overlay");
 
-        this.elements.output = document.getElementById("terminal-output");
+    cache(){
 
-        this.elements.input = document.getElementById("terminal-command");
 
-        this.elements.openButton = document.getElementById("terminal-toggle");
+        this.elements.overlay =
+            document.getElementById(
+                "terminal-overlay"
+            );
 
-        this.elements.closeButton = document.getElementById("terminal-close");
 
-    },
+        this.elements.output =
+            document.getElementById(
+                "terminal-output"
+            );
 
-    events() {
 
-        if (this.elements.openButton) {
+        this.elements.input =
+            document.getElementById(
+                "terminal-command"
+            );
 
-            this.elements.openButton.addEventListener("click", () => {
 
-                this.open();
+        this.elements.openButton =
+            document.getElementById(
+                "terminal-toggle"
+            );
 
-            });
 
-        }
+        this.elements.closeButton =
+            document.getElementById(
+                "terminal-close"
+            );
 
-        if (this.elements.closeButton) {
-
-            this.elements.closeButton.addEventListener("click", () => {
-
-                this.close();
-
-            });
-
-        }
-
-        if (this.elements.input) {
-
-            this.elements.input.addEventListener("keydown", (e) => {
-
-                this.keydown(e);
-
-            });
-
-        }
 
     },
 
-    open() {
 
-        if (!this.elements.overlay) return;
 
-        this.elements.overlay.classList.add("active");
+    events(){
+
+
+        if(this.elements.openButton){
+
+            this.elements.openButton
+            .addEventListener(
+                "click",
+                ()=>{
+                    this.open();
+                }
+            );
+
+        }
+
+
+
+        if(this.elements.closeButton){
+
+            this.elements.closeButton
+            .addEventListener(
+                "click",
+                ()=>{
+                    this.close();
+                }
+            );
+
+        }
+
+
+
+        if(this.elements.input){
+
+            this.elements.input
+            .addEventListener(
+                "keydown",
+                (e)=>{
+                    this.keydown(e);
+                }
+            );
+
+        }
+
+
+    },
+
+
+    open(){
+
+
+        if(!this.elements.overlay)
+            return;
+
+
+        this.elements.overlay
+        .classList
+        .add("active");
+
 
         this.isOpen = true;
 
+
         this.boot();
+
 
     },
 
-    close() {
 
-        if (!this.elements.overlay) return;
+    close(){
 
-        this.elements.overlay.classList.remove("active");
+
+        if(!this.elements.overlay)
+            return;
+
+
+        this.elements.overlay
+        .classList
+        .remove("active");
+
 
         this.isOpen = false;
 
+
     },
 
-    boot() {
 
-        if (!this.elements.output) return;
+    boot(){
 
-        this.elements.output.textContent = "";
 
-        let index = 0;
+        if(!this.elements.output)
+            return;
 
-        const next = () => {
 
-            if (index >= this.bootLines.length) {
+        this.elements.output.textContent="";
 
-                if (this.elements.input) {
+
+        let i = 0;
+
+
+        const loading = ()=>{
+
+
+            if(i >= this.bootLines.length){
+
+
+                if(this.elements.input){
 
                     this.elements.input.focus();
 
                 }
 
+
                 return;
 
             }
 
-            this.print(this.bootLines[index]);
 
-            index++;
+            this.print(
+                this.bootLines[i]
+            );
 
-            setTimeout(next, 120);
+
+            i++;
+
+
+            setTimeout(
+                loading,
+                100
+            );
+
 
         };
 
-        next();
+
+        loading();
+
 
     },
 
-    print(text = "") {
 
-        this.elements.output.textContent += text + "\n";
+    print(text=""){
+
+
+        if(!this.elements.output)
+            return;
+
+
+        this.elements.output.textContent +=
+            text + "\n";
+
 
         this.elements.output.scrollTop =
             this.elements.output.scrollHeight;
 
-    },
-
-    registerCommands() {
-
-        this.commands = {};
 
     },
 
-    keydown(e) {
+    keydown(e){
 
-        // PART 1B
 
-    }
+        if(e.key === "Enter"){
 
-};
 
-document.addEventListener("DOMContentLoaded", () => {
+            const value =
+                this.elements.input.value.trim();
 
-    Terminal.init();
 
-});
 
-        if (e.key === "Enter") {
+            if(value === "")
+                return;
 
-            const value = this.elements.input.value.trim();
 
-            if (value === "") return;
 
             this.history.push(value);
 
-            this.historyIndex = this.history.length;
 
-            this.print("> " + value);
+
+            this.historyIndex =
+                this.history.length;
+
+
+
+            this.print(
+                "> " + value
+            );
+
+
 
             this.execute(value);
 
+
+
             this.elements.input.value = "";
+
+
 
             return;
 
         }
 
-        if (e.key === "ArrowUp") {
 
-            if (this.history.length === 0) return;
+
+
+        if(e.key === "ArrowUp"){
+
+
+            if(this.history.length === 0)
+                return;
+
+
 
             this.historyIndex--;
 
-            if (this.historyIndex < 0) {
+
+
+            if(this.historyIndex < 0){
 
                 this.historyIndex = 0;
 
             }
 
+
+
             this.elements.input.value =
-                this.history[this.historyIndex];
+                this.history[
+                    this.historyIndex
+                ];
 
-            setTimeout(() => {
 
-                this.elements.input.setSelectionRange(
-                    this.elements.input.value.length,
-                    this.elements.input.value.length
-                );
-
-            }, 0);
 
             e.preventDefault();
+
+
 
             return;
 
         }
 
-        if (e.key === "ArrowDown") {
 
-            if (this.history.length === 0) return;
+
+
+        if(e.key === "ArrowDown"){
+
+
+            if(this.history.length === 0)
+                return;
+
+
 
             this.historyIndex++;
 
-            if (this.historyIndex >= this.history.length) {
 
-                this.historyIndex = this.history.length;
+
+            if(
+                this.historyIndex >=
+                this.history.length
+            ){
+
+
+                this.historyIndex =
+                    this.history.length;
+
+
 
                 this.elements.input.value = "";
+
+
 
                 return;
 
             }
 
+
+
             this.elements.input.value =
-                this.history[this.historyIndex];
+                this.history[
+                    this.historyIndex
+                ];
 
-            setTimeout(() => {
 
-                this.elements.input.setSelectionRange(
-                    this.elements.input.value.length,
-                    this.elements.input.value.length
-                );
-
-            }, 0);
 
             e.preventDefault();
 
+
         }
+
 
     },
 
-    execute(command) {
 
-        const cmd = command.toLowerCase();
 
-        if (this.commands[cmd]) {
+
+    execute(command){
+
+
+        const cmd =
+            command
+            .toLowerCase()
+            .trim();
+
+
+
+        if(this.commands[cmd]){
+
 
             this.commands[cmd]();
+
+
+
+            return;
+
+
+        }
+
+
+
+        this.unknown(command);
+
+
+
+    },
+
+
+
+
+    unknown(command){
+
+
+        this.print("");
+
+        this.print(
+            "Unknown command:"
+        );
+
+
+        this.print(
+            command
+        );
+
+
+        this.print("");
+
+
+        this.print(
+            'Type "help" to view commands.'
+        );
+
+
+        this.print("");
+
+
+    },
+
+       registerCommands(){
+
+
+        this.commands = {
+
+
+            help: ()=>{
+
+
+                this.print("");
+
+                this.print(
+                    "========== COMMAND LIST =========="
+                );
+
+                this.print("");
+
+                this.print("help");
+                this.print("about");
+                this.print("roadmap");
+                this.print("status");
+                this.print("token");
+                this.print("contract");
+                this.print("market");
+                this.print("clear");
+
+                this.print("");
+
+
+            },
+
+
+
+            about: ()=>{
+
+
+                this.print("");
+
+                this.print(
+                    "ROBINHOOD CLOAK"
+                );
+
+                this.print("");
+
+                this.print(
+                    "Ticker : $RHC"
+                );
+
+                this.print(
+                    "Chain  : Robinhood Chain"
+                );
+
+                this.print(
+                    "Version: 1.0.0"
+                );
+
+                this.print("");
+
+                this.print(
+                    "AI Terminal System Online"
+                );
+
+                this.print("");
+
+
+            },
+
+
+
+            roadmap: ()=>{
+
+
+                this.print("");
+
+                this.print(
+                    "========== ROADMAP =========="
+                );
+
+                this.print("");
+
+                this.print(
+                    "[✓] Website"
+                );
+
+                this.print(
+                    "[✓] Terminal"
+                );
+
+                this.print(
+                    "[✓] AI System"
+                );
+
+                this.print(
+                    "[ ] Live Market"
+                );
+
+                this.print(
+                    "[ ] Dashboard"
+                );
+
+                this.print("");
+
+            },
+
+
+
+            status: ()=>{
+
+
+                this.print("");
+
+                this.print(
+                    "SYSTEM STATUS"
+                );
+
+                this.print("");
+
+                this.print(
+                    "Website  : ONLINE"
+                );
+
+                this.print(
+                    "Terminal : ONLINE"
+                );
+
+                this.print(
+                    "AI       : READY"
+                );
+
+                this.print(
+                    "Network  : READY"
+                );
+
+                this.print("");
+
+            },
+
+
+
+            token: ()=>{
+
+
+                this.print("");
+
+                this.print(
+                    "TOKEN INFORMATION"
+                );
+
+                this.print("");
+
+                this.print(
+                    "Name   : Robinhood Cloak"
+                );
+
+                this.print(
+                    "Ticker : $RHC"
+                );
+
+                this.print(
+                    "Chain  : Robinhood Chain"
+                );
+
+                this.print("");
+
+            },
+
+
+
+            contract: ()=>{
+
+
+                this.print("");
+
+                this.print(
+                    "CONTRACT"
+                );
+
+                this.print("");
+
+                this.print(
+                    "COMING SOON..."
+                );
+
+                this.print("");
+
+            },
+
+
+
+            market: ()=>{
+
+
+                this.print("");
+
+                this.print(
+                    "MARKET MODULE"
+                );
+
+                this.print("");
+
+                this.print(
+                    "Live Market Integration Pending..."
+                );
+
+                this.print("");
+
+            },
+
+
+
+            clear: ()=>{
+
+
+                this.elements.output.textContent = "";
+
+
+            }
+
+
+        };
+
+
+    },
+
+       ai(message){
+
+
+        const text =
+            message.toLowerCase();
+
+
+
+        if(
+            text.includes("hello") ||
+            text.includes("hi")
+        ){
+
+            this.print("");
+
+            this.print(
+                "Cloak AI: Welcome, Cloaked One."
+            );
+
+            this.print("");
 
             return;
 
         }
 
-        this.unknown(command);
 
-    },
 
-    unknown(command) {
-
-        this.print("");
-
-        this.print("Unknown command:");
-
-        this.print(command);
-
-        this.print("");
-
-        this.print('Type "help" to view available commands.');
-
-        this.print("");
-
-    },
-
-registerCommands() {
-
-    this.commands = {
-
-        help: () => {
+        if(
+            text.includes("price") ||
+            text.includes("market")
+        ){
 
             this.print("");
 
-            this.print("========== COMMAND LIST ==========");
+            this.print(
+                "Cloak AI: Market module is preparing..."
+            );
 
             this.print("");
 
-            this.print("help");
-
-            this.print("about");
-
-            this.print("roadmap");
-
-            this.print("status");
-
-            this.print("token");
-
-            this.print("market");
-
-            this.print("contract");
-
-            this.print("website");
-
-            this.print("telegram");
-
-            this.print("x");
-
-            this.print("clear");
-
-            this.print("");
-
-        },
-
-        about: () => {
-
-            this.print("");
-
-            this.print("Robinhood Cloak");
-
-            this.print("");
-
-            this.print("Ticker : " + CONFIG.PROJECT.SYMBOL);
-
-            this.print("Chain  : " + CONFIG.PROJECT.CHAIN);
-
-            this.print("Version: " + CONFIG.PROJECT.VERSION);
-
-            this.print("");
-
-            this.print(CONFIG.AI.NAME);
-
-            this.print("");
-
-        },
-
-        roadmap: () => {
-
-            this.print("");
-
-            this.print("ROADMAP");
-
-            this.print("");
-
-            this.print("[✓] Website");
-
-            this.print("[✓] AI");
-
-            this.print("[✓] Terminal");
-
-            this.print("[ ] Live Market");
-
-            this.print("[ ] Gemini AI");
-
-            this.print("[ ] Dashboard");
-
-            this.print("");
-
-        },
-
-        status: () => {
-
-            this.print("");
-
-            this.print("SYSTEM STATUS");
-
-            this.print("");
-
-            this.print("Website : ONLINE");
-
-            this.print("AI      : READY");
-
-            this.print("Market  : READY");
-
-            this.print("Terminal: ONLINE");
-
-            this.print("");
-
-        },
-
-        token: () => {
-
-            this.print("");
-
-            this.print("TOKEN");
-
-            this.print("");
-
-            this.print("Name   : " + CONFIG.PROJECT.NAME);
-
-            this.print("Ticker : " + CONFIG.PROJECT.SYMBOL);
-
-            this.print("Supply : " + CONFIG.TOKEN.SUPPLY);
-
-            this.print("Tax    : " + CONFIG.TOKEN.TAX);
-
-            this.print("");
-
-        },
-
-        contract: () => {
-
-            this.print("");
-
-            this.print("Contract");
-
-            this.print("");
-
-            this.print(CONFIG.TOKEN.CONTRACT);
-
-            this.print("");
-
-        },
-
-        market: () => {
-
-            this.print("");
-
-            this.print("Market Module");
-
-            this.print("");
-
-            this.print("Coming Soon...");
-
-            this.print("");
-
-        },
-
-        website: () => {
-
-            if (CONFIG.LINKS.WEBSITE) {
-
-                Utils.open(CONFIG.LINKS.WEBSITE);
-
-            }
-
-            this.print("");
-
-            this.print("Opening Website...");
-
-            this.print("");
-
-        },
-
-        telegram: () => {
-
-            if (CONFIG.LINKS.TELEGRAM) {
-
-                Utils.open(CONFIG.LINKS.TELEGRAM);
-
-            }
-
-            this.print("");
-
-            this.print("Opening Telegram...");
-
-            this.print("");
-
-        },
-
-        x: () => {
-
-            if (CONFIG.LINKS.X) {
-
-                Utils.open(CONFIG.LINKS.X);
-
-            }
-
-            this.print("");
-
-            this.print("Opening X...");
-
-            this.print("");
-
-        },
-
-        clear: () => {
-
-            this.elements.output.textContent = "";
+            return;
 
         }
 
-    };
 
-},
 
+        if(
+            text.includes("who are you")
+        ){
+
+            this.print("");
+
+            this.print(
+                "Cloak AI: I am the Robinhood Cloak Intelligence System."
+            );
+
+            this.print("");
+
+            return;
+
+        }
+
+
+
+        this.print("");
+
+        this.print(
+            "Cloak AI: Command received."
+        );
+
+        this.print(
+            "Try typing: help"
+        );
+
+        this.print("");
+
+
+    }
+
+
+
+};
+
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        Terminal.init();
+
+    }
+);
