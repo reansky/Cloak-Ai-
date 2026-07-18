@@ -677,3 +677,138 @@ font-size:22px;
 }
 
 }
+
+/* CLOAK INFO */
+
+.cloak-info{
+    padding:120px 8%;
+    position:relative;
+}
+
+
+.section-title{
+    text-align:center;
+    max-width:700px;
+    margin:auto;
+}
+
+
+.section-title h2{
+    font-size:55px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+
+.section-title p{
+    margin-top:20px;
+    opacity:.7;
+    font-size:18px;
+}
+
+
+
+.cloak-grid{
+
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+}
+
+
+
+.cloak-card{
+
+    padding:35px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:25px;
+
+    border:
+    1px solid rgba(255,255,255,.15);
+
+    transition:.4s;
+
+}
+
+
+
+.cloak-card:hover{
+
+    transform:
+    translateY(-15px);
+
+    box-shadow:
+    0 20px 60px rgba(0,255,120,.25);
+
+}
+
+
+
+.cloak-card span{
+
+    font-size:45px;
+
+    font-weight:900;
+
+    opacity:.3;
+
+}
+
+
+
+.cloak-card h3{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+}
+
+
+
+.cloak-card p{
+
+    margin-top:15px;
+
+    line-height:1.6;
+
+    opacity:.7;
+
+}
+
+
+
+/* SCROLL ANIMATION */
+
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+    translateY(50px);
+
+    transition:
+    1s ease;
+
+}
+
+
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
