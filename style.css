@@ -825,3 +825,61 @@ bottom:90px;
 }
 
 }
+
+/* =====================================================
+   RHC TOAST NOTIFICATION
+===================================================== */
+
+.rhc-toast{
+
+position:fixed;
+
+top:25px;
+
+right:25px;
+
+background:#111;
+
+color:#fff;
+
+padding:14px 18px;
+
+border-left:4px solid #00ff66;
+
+border-radius:12px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+
+transform:translateX(120%);
+
+transition:.3s ease;
+
+z-index:99999;
+
+font-weight:600;
+
+}
+
+.rhc-toast.show{
+
+transform:translateX(0);
+
+}
+
+.rhc-toast.success{
+
+border-color:#00ff66;
+
+}
+
+.rhc-toast.error{
+
+border-color:#ff4444;
+
+}
+
+.rhc-toast.warning{
+
+border-color:#ffaa00;
+
+}
