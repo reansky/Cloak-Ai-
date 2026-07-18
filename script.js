@@ -1,296 +1,125 @@
-/* =====================================================
-   ROBINHOOD CLOAK V2
-   MAIN SCRIPT
-===================================================== */
-
-window.addEventListener("load",()=>{
-
-const loader=document.getElementById("loader");
-
-const bar=document.getElementById("loader-bar");
-
-let progress=0;
-
-const timer=setInterval(()=>{
-
-progress+=4;
-
-if(bar){
-
-bar.style.width=progress+"%";
-
-}
-
-if(progress>=100){
-
-clearInterval(timer);
-
-setTimeout(()=>{
-
-document.body.classList.add("loaded");
-
-},300);
-
-}
-
-},40);
-
-});
-
-
-/* ===========================
-COPY CONTRACT
-=========================== */
-
-function copyCA() {
-
-    if (!window.CONFIG) return;
-
-    navigator.clipboard.writeText(CONFIG.TOKEN.CONTRACT);
-
-    alert("Contract copied!");
-
-}
-
-
-/* ===========================
-SMOOTH SCROLL
-=========================== */
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-    link.addEventListener("click", function (e) {
-
-        e.preventDefault();
-
-        const target = document.querySelector(
-            this.getAttribute("href")
-        );
-
-        if (target) {
-
-            target.scrollIntoView({
-
-                behavior: "smooth"
-
-            });
-
-        }
-
-    });
-
-});
-
-
-/* ===========================
-TERMINAL BUTTON
-=========================== */
+/* =========================================================
+   ROBINHOOD CLOAK V4
+=========================================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const terminalBtn =
-        document.getElementById(
-            "terminal-toggle-floating"
-        );
+    /*==========================
+      LOADER
+    ==========================*/
 
-    const terminalOverlay =
-        document.getElementById(
-            "terminal-overlay"
-        );
+    const loader = document.getElementById("loader");
+    const progress = document.getElementById("loader-progress");
 
-    const terminalClose =
-        document.getElementById(
-            "terminal-close"
-        );
+    let value = 0;
 
-    if (terminalBtn && terminalOverlay) {
+    const loading = setInterval(() => {
 
-        terminalBtn.addEventListener("click", () => {
+        value += 2;
 
-            terminalOverlay.classList.add("active");
+        if (progress) {
+            progress.style.width = value + "%";
+        }
 
-            if (window.Terminal) {
+        if (value >= 100) {
 
-                Terminal.open();
+            clearInterval(loading);
 
-            }
+            setTimeout(() => {
 
-        });
+                if (loader) {
 
-    }
+                    loader.style.opacity = "0";
+                    loader.style.pointerEvents = "none";
 
-    if (terminalClose && terminalOverlay) {
+                    setTimeout(() => {
 
-        terminalClose.addEventListener("click", () => {
+                        loader.remove();
 
-            terminalOverlay.classList.remove("active");
+                    },500);
 
-        });
+                }
 
-    }
+            },300);
 
-});
+        }
 
+    },25);
 
-/* ===========================
-SCROLL ANIMATION
-=========================== */
+    /*==========================
+      BACK TO TOP
+    ==========================*/
 
-const observer = new IntersectionObserver((entries) => {
+    const topButton = document.getElementById("backToTop");
 
-    entries.forEach(entry => {
+    window.addEventListener("scroll",()=>{
 
-        if (entry.isIntersecting) {
+        if(window.scrollY>500){
 
-            entry.target.style.opacity = "1";
+            topButton.style.display="flex";
 
-            entry.target.style.transform =
+        }else{
 
-                "translateY(0px)";
+            topButton.style.display="none";
 
         }
 
     });
 
-}, {
+    topButton.addEventListener("click",()=>{
 
-    threshold: .15
+        window.scrollTo({
 
-});
+            top:0,
 
+            behavior:"smooth"
 
-document.querySelectorAll(
+        });
 
-    ".market-card,.feature-card,.about-card"
+    });
 
-).forEach(card => {
+    /*==========================
+      PROGRESS BAR
+    ==========================*/
 
-    card.style.opacity = "0";
+    const progressBar=document.getElementById("progress-bar");
 
-    card.style.transform = "translateY(40px)";
+    window.addEventListener("scroll",()=>{
 
-    card.style.transition = ".6s";
+        const scroll=
 
-    observer.observe(card);
+        document.documentElement.scrollTop;
 
-});
+        const height=
 
+        document.documentElement.scrollHeight-
 
-console.log("✅ Robinhood Cloak V2 Loaded");
+        document.documentElement.clientHeight;
 
+        progressBar.style.width=
 
-/* ===========================
-SCROLL EFFECT
-=========================== */
+        (scroll/height)*100+"%";
 
-const progressBar =
-document.getElementById("progress-bar");
+    });
 
-const topButton =
-document.getElementById("backToTop");
+    /*==========================
+      HERO FLOAT
+    ==========================*/
 
-window.addEventListener("scroll",()=>{
+    const hero=document.querySelector(".hero-image img");
 
-const scroll=
-document.documentElement.scrollTop;
+    document.addEventListener("mousemove",(e)=>{
 
-const height=
-document.documentElement.scrollHeight-
-document.documentElement.clientHeight;
+        if(!hero) return;
 
-const progress=(scroll/height)*100;
+        const x=(e.clientX/window.innerWidth-.5)*12;
 
-if(progressBar){
+        const y=(e.clientY/window.innerHeight-.5)*12;
 
-progressBar.style.width=
-progress+"%";
+        hero.style.transform=
 
-}
+        `rotateY(${x}deg) rotateX(${-y}deg)`;
 
-if(topButton){
-
-topButton.style.display=
-scroll>350?"flex":"none";
-
-}
-
-});
-
-
-if(topButton){
-
-topButton.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
-
-}
-
-/* ===========================
-NAVBAR SHRINK
-=========================== */
-
-const navbar = document.querySelector(".navbar");
-
-window.addEventListener("scroll",()=>{
-
-if(!navbar) return;
-
-if(window.scrollY>80){
-
-navbar.style.padding="6px 0";
-
-navbar.style.background="rgba(0,0,0,.72)";
-
-}else{
-
-navbar.style.padding="0";
-
-navbar.style.background="rgba(0,0,0,.35)";
-
-}
-
-});
-
-/* =====================================================
-   MOUSE GLOW
-===================================================== */
-
-const glow=document.getElementById("mouse-glow");
-
-document.addEventListener("mousemove",(e)=>{
-
-if(!glow) return;
-
-glow.style.left=e.clientX+"px";
-
-glow.style.top=e.clientY+"px";
-
-});
-
-
-/* =====================================================
-   HERO PARALLAX
-===================================================== */
-
-const heroImage=document.querySelector(".hero-image img");
-
-document.addEventListener("mousemove",(e)=>{
-
-if(!heroImage) return;
-
-const x=(e.clientX-window.innerWidth/2)/45;
-
-const y=(e.clientY-window.innerHeight/2)/45;
-
-heroImage.style.transform=
-`translate(${x}px,${y}px)`;
+    });
 
 });
