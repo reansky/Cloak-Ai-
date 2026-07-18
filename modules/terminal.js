@@ -247,6 +247,54 @@ window.Terminal = {
 
             },
 
+           holders: () => {
+
+    this.print("");
+
+    this.print("Holders");
+
+    this.print(CONFIG.MARKET.HOLDERS);
+
+    this.print("");
+
+},
+
+version: () => {
+
+    this.print("");
+
+    this.print(CONFIG.PROJECT.VERSION);
+
+    this.print("");
+
+},
+
+copy: () => {
+
+    navigator.clipboard.writeText(CONFIG.TOKEN.CONTRACT);
+
+    this.print("");
+
+    this.print("Contract copied!");
+
+    this.print("");
+
+},
+
+links: () => {
+
+    this.print("");
+
+    this.print("Website  : " + CONFIG.LINKS.WEBSITE);
+
+    this.print("X        : " + CONFIG.LINKS.X);
+
+    this.print("Telegram : " + CONFIG.LINKS.TELEGRAM);
+
+    this.print("");
+
+},
+
             contract: () => {
 
                 navigator.clipboard.writeText(
