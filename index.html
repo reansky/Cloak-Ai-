@@ -1,200 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>Robinhood Cloak | $CLOAK</title>
 
-<meta
-name="description"
-content="Robinhood Cloak - Community powered project on Robinhood Chain">
+<meta name="description" content="Robinhood Cloak ($CLOAK)">
 
-<title>Robinhood Cloak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<link
-rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link
-rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
-
-<link
-rel="stylesheet"
-href="style.css">
-
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!--==========================
-LOADER
-===========================-->
+<div class="bg-grid"></div>
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
 
-<div id="loader">
+<header id="navbar">
 
-<div class="loader-box">
+<div class="logo">
 
-<img src="logo.png" alt="Logo">
+<img src="assets/logo.png" alt="Robinhood Cloak">
 
-<h2>
-
-Robinhood Cloak
-
-</h2>
-
-<p>
-
-Initializing Secure Network...
-
-</p>
-
-<div class="loader-bar">
-
-<div id="loader-progress"></div>
+<span>Robinhood Cloak</span>
 
 </div>
-
-</div>
-
-</div>
-
-<!--==========================
-BACKGROUND
-===========================-->
-
-<div class="background">
-
-<div class="grid"></div>
-
-<div class="glow glow-left"></div>
-
-<div class="glow glow-right"></div>
-
-<div class="noise"></div>
-
-</div>
-
-<div id="progress-bar"></div>
-
-<button id="backToTop">
-
-↑
-
-</button>
-
-<!--==========================
-NAVBAR
-===========================-->
-
-<header class="navbar">
-
-<div class="container">
-
-<a class="brand">
-
-<img src="logo.png">
-
-<span>
-
-Robinhood Cloak
-
-</span>
-
-</a>
 
 <nav>
 
-<a href="#market">
+<a href="#vision">Vision</a>
 
-Market
+<a href="#technology">Technology</a>
 
-</a>
+<a href="#token">Token</a>
 
-<a href="#about">
+<a href="#roadmap">Roadmap</a>
 
-About
-
-</a>
-
-<a href="#community">
-
-Community
-
-</a>
-
-<a id="terminal-toggle-floating">
-
-Terminal
-
-</a>
+<a href="#faq">FAQ</a>
 
 </nav>
 
-</div>
+<a href="#" class="buy-btn">
+Buy $CLOAK
+</a>
 
 </header>
 
-<!--==========================
-HERO
-===========================-->
-
 <section class="hero">
-
-<div class="container hero-grid">
 
 <div class="hero-left">
 
-<div class="hero-badge">
-
-Built on Robinhood Chain
-
-</div>
+<p class="eyebrow">
+ROBINHOOD CHAIN
+</p>
 
 <h1>
 
-Privacy Layer
+Robinhood
 
-for
-
-<span>
-
-Robinhood Chain
-
-</span>
+<span>Cloak</span>
 
 </h1>
 
-<p>
+<p class="hero-desc">
 
-Robinhood Cloak is a premium community project focused on privacy, innovation and the future of Web3 experiences on Robinhood Chain.
+The premium identity of Robinhood Chain.
+
+Designed with stealth, precision and modern aesthetics for the next generation.
 
 </p>
 
 <div class="hero-buttons">
 
-<a
-href="#"
-class="btn-primary">
+<a href="#" class="primary-btn">
 
-Buy Now
+Buy $CLOAK
 
 </a>
 
-<a
-href="#"
-class="btn-secondary">
+<a href="#" class="secondary-btn">
 
 View Chart
 
@@ -208,394 +98,15 @@ View Chart
 
 <div class="hero-image">
 
-<img
-src="hero.png"
-alt="Hero">
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!--==========================
-MARKET
-===========================-->
-
-<section id="market" class="market">
-
-<div class="container">
-
-<div class="section-header">
-
-<span>LIVE MARKET</span>
-
-<h2>Market Overview</h2>
-
-<p>Real-time statistics powered by Robinhood Cloak.</p>
-
-</div>
-
-<div class="market-grid">
-
-<div class="market-card">
-
-<h4>Price</h4>
-
-<h3 id="price">$0.00</h3>
-
-</div>
-
-<div class="market-card">
-
-<h4>Market Cap</h4>
-
-<h3 id="marketcap">$0</h3>
-
-</div>
-
-<div class="market-card">
-
-<h4>Liquidity</h4>
-
-<h3 id="liquidity">$0</h3>
-
-</div>
-
-<div class="market-card">
-
-<h4>24H Volume</h4>
-
-<h3 id="volume">$0</h3>
-
-</div>
+<img src="assets/hero.png" alt="Hero">
 
 </div>
 
 </div>
 
 </section>
-
-<!--==========================
-ABOUT
-===========================-->
-
-<section id="about" class="about">
-
-<div class="container about-grid">
-
-<div class="about-text">
-
-<span>ABOUT</span>
-
-<h2>
-
-Robinhood Cloak
-
-</h2>
-
-<p>
-
-Robinhood Cloak is a community-driven project built on Robinhood Chain with a focus on clean design, innovation, AI utilities and a premium Web3 experience.
-
-</p>
-
-<p>
-
-Built for speed, simplicity and long-term growth, Robinhood Cloak combines modern interfaces with community-first development.
-
-</p>
-
-</div>
-
-<div class="about-cards">
-
-<div class="info-card">
-
-<h4>Network</h4>
-
-<p>Robinhood Chain</p>
-
-</div>
-
-<div class="info-card">
-
-<h4>Supply</h4>
-
-<p>1,000,000,000</p>
-
-</div>
-
-<div class="info-card">
-
-<h4>Tax</h4>
-
-<p>0 / 0</p>
-
-</div>
-
-<div class="info-card">
-
-<h4>Status</h4>
-
-<p>Building</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!--==========================
-COMMUNITY
-===========================-->
-
-<section id="community" class="community">
-
-<div class="container">
-
-<div class="section-header">
-
-<span>COMMUNITY</span>
-
-<h2>
-
-Join Robinhood Cloak
-
-</h2>
-
-<p>
-
-Stay connected with the latest updates.
-
-</p>
-
-</div>
-
-<div class="community-buttons">
-
-<a id="website-link" href="#">
-
-Website
-
-</a>
-
-<a id="x-link" href="#">
-
-𝕏
-
-</a>
-
-<a id="telegram-link" href="#">
-
-Telegram
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!--==========================
-FOOTER
-===========================-->
-
-<footer>
-
-<div class="container footer-box">
-
-<img src="logo.png" alt="Logo">
-
-<h3>
-
-Robinhood Cloak
-
-</h3>
-
-<p>
-
-Privacy • Community • Robinhood Chain
-
-</p>
-
-<small>
-
-© 2026 Robinhood Cloak. All Rights Reserved.
-
-</small>
-
-</div>
-
-</footer> 
-
-<!--=================================
-THE CLOAK AI
-==================================-->
-
-<button id="cloak-toggle" aria-label="Open AI">
-
-    <img src="logo.png" alt="The Cloak">
-
-</button>
-
-<div id="cloak-chat">
-
-    <div class="cloak-header">
-
-        <div class="cloak-profile">
-
-            <img src="logo.png" alt="Logo">
-
-            <div>
-
-                <h3>The Cloak AI</h3>
-
-                <small>Always Online</small>
-
-            </div>
-
-        </div>
-
-        <button id="close-chat">
-
-            ✕
-
-        </button>
-
-    </div>
-
-    <div id="chat-messages">
-
-        <div class="bot-message">
-
-            👋 Welcome to Robinhood Cloak.
-
-            <br><br>
-
-            Ask me anything about the project.
-
-        </div>
-
-    </div>
-
-    <div class="chat-input">
-
-        <input
-
-            id="user-input"
-
-            type="text"
-
-            placeholder="Ask The Cloak..."
-
-        >
-
-        <button id="send-message">
-
-            Send
-
-        </button>
-
-    </div>
-
-</div>
-
-<!--=================================
-TERMINAL
-==================================-->
-
-<button id="terminal-toggle" aria-label="Open Terminal">
-
-    >
-
-</button>
-
-<div id="terminal-overlay">
-
-    <div id="terminal-window">
-
-        <div class="terminal-header">
-
-            <div class="terminal-buttons">
-
-                <span class="red"></span>
-
-                <span class="yellow"></span>
-
-                <span class="green"></span>
-
-            </div>
-
-            <div class="terminal-title">
-
-                Robinhood Cloak Terminal
-
-            </div>
-
-            <button id="terminal-close">
-
-                ✕
-
-            </button>
-
-        </div>
-
-        <pre id="terminal-output"></pre>
-
-        <div class="terminal-input">
-
-            <span>
-
-                cloak@robinhood:~$
-
-            </span>
-
-            <input
-
-                id="terminal-command"
-
-                type="text"
-
-                autocomplete="off"
-
-                spellcheck="false"
-
-            >
-
-        </div>
-
-    </div>
-
-</div>
-
-<!--=================================
-SCRIPTS
-==================================-->
-
-<script src="modules/config.js"></script>
-
-<script src="modules/utils.js"></script>
-
-<script src="modules/notifications.js"></script>
-
-<script src="modules/animations.js"></script>
-
-<script src="modules/market.js"></script>
-
-<script src="modules/terminal.js"></script>
-
-<script src="modules/ai.js"></script>
-
-<script src="modules/wallet.js"></script>
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
