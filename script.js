@@ -139,3 +139,17 @@ reveal
 
 
 reveal();
+
+
+function copyContract(){
+
+navigator.clipboard.writeText(
+"0xCLOAKXXXXXXXXXXXXXXXX"
+);
+
+
+alert(
+"Contract copied!"
+);
+
+}
