@@ -1,328 +1,157 @@
-console.log("Robinhood Cloak $RHC Final Script Loaded");
+/* =====================================================
+   ROBINHOOD CLOAK V2
+   MAIN SCRIPT
+===================================================== */
 
+window.addEventListener("load", () => {
 
+    setTimeout(() => {
 
-// =======================
-// LOADER
-// =======================
+        document.body.classList.add("loaded");
 
-
-window.addEventListener("load",()=>{
-
-
-const loader =
-document.getElementById("loader");
-
-
-
-if(loader){
-
-
-setTimeout(()=>{
-
-
-loader.style.opacity="0";
-
-loader.style.transition="0.5s";
-
-
-
-setTimeout(()=>{
-
-
-loader.style.display="none";
-
-
-},500);
-
-
-
-},1800);
-
-
-
-}
-
-
+    }, 1200);
 
 });
 
 
+/* ===========================
+COPY CONTRACT
+=========================== */
 
+function copyCA() {
 
+    if (!window.CONFIG) return;
 
+    navigator.clipboard.writeText(CONFIG.TOKEN.CONTRACT);
 
-
-// =======================
-// COPY CONTRACT
-// =======================
-
-
-function copyCA(){
-
-
-const contract =
-document.getElementById("contract");
-
-
-
-if(contract){
-
-
-
-navigator.clipboard.writeText(
-contract.innerText
-);
-
-
-
-alert("Contract copied!");
-
-
+    alert("Contract copied!");
 
 }
 
 
+/* ===========================
+SMOOTH SCROLL
+=========================== */
 
-}
+document.querySelectorAll('a[href^="#"]').forEach(link => {
 
+    link.addEventListener("click", function (e) {
 
+        e.preventDefault();
 
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
 
+        if (target) {
 
+            target.scrollIntoView({
 
+                behavior: "smooth"
 
-// =======================
-// NAVBAR EFFECT
-// =======================
+            });
 
+        }
 
-window.addEventListener("scroll",()=>{
-
-
-const navbar =
-document.getElementById("navbar");
-
-
-
-if(navbar){
-
-
-if(window.scrollY > 50){
-
-
-navbar.style.borderBottom =
-"1px solid #222";
-
-
-}else{
-
-
-navbar.style.borderBottom =
-"none";
-
-
-}
-
-
-
-}
-
-
+    });
 
 });
 
 
+/* ===========================
+TERMINAL BUTTON
+=========================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const terminalBtn =
+        document.getElementById(
+            "terminal-toggle-floating"
+        );
+
+    const terminalOverlay =
+        document.getElementById(
+            "terminal-overlay"
+        );
+
+    const terminalClose =
+        document.getElementById(
+            "terminal-close"
+        );
+
+    if (terminalBtn && terminalOverlay) {
+
+        terminalBtn.addEventListener("click", () => {
+
+            terminalOverlay.classList.add("active");
+
+            if (window.Terminal) {
+
+                Terminal.open();
+
+            }
+
+        });
+
+    }
+
+    if (terminalClose && terminalOverlay) {
+
+        terminalClose.addEventListener("click", () => {
+
+            terminalOverlay.classList.remove("active");
+
+        });
+
+    }
+
+});
 
 
+/* ===========================
+SCROLL ANIMATION
+=========================== */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+
+            entry.target.style.transform =
+
+                "translateY(0px)";
+
+        }
+
+    });
+
+}, {
+
+    threshold: .15
+
+});
 
 
-
-// =======================
-// SCROLL REVEAL
-// =======================
-
-
-const elements =
 document.querySelectorAll(
-".market-card, .token-card, .steps div, .about, .community, .disclaimer"
-);
 
+    ".market-card,.feature-card,.about-card"
 
+).forEach(card => {
 
+    card.style.opacity = "0";
 
-const observer =
-new IntersectionObserver(
-(entries)=>{
+    card.style.transform = "translateY(40px)";
 
+    card.style.transition = ".6s";
 
-entries.forEach(entry=>{
-
-
-if(entry.isIntersecting){
-
-
-entry.target.style.opacity="1";
-
-entry.target.style.transform =
-"translateY(0)";
-
-
-}
-
+    observer.observe(card);
 
 });
 
 
-},
-{
-threshold:0.15
-});
+console.log("✅ Robinhood Cloak V2 Loaded");
 
 
-
-
-
-
-elements.forEach(el=>{
-
-
-el.style.opacity="0";
-
-
-el.style.transform =
-"translateY(40px)";
-
-
-el.style.transition =
-"all .8s ease";
-
-
-
-observer.observe(el);
-
-
-
-});
-
-
-
-
-
-
-
-
-// =======================
-// DEXSCREENER READY
-// =======================
-
-
-// Setelah token launch,
-// isi CONTRACT_ADDRESS
-// agar data live muncul
-
-
-
-const CONTRACT_ADDRESS =
-"YOUR_CONTRACT_ADDRESS";
-
-
-
-
-
-async function loadDexData(){
-
-
-if(
-CONTRACT_ADDRESS ===
-"YOUR_CONTRACT_ADDRESS"
-){
-
-console.log(
-"Waiting for contract address..."
-);
-
-
-return;
-
-
-}
-
-
-
-try{
-
-
-const response =
-await fetch(
-`https://api.dexscreener.com/latest/dex/tokens/${CONTRACT_ADDRESS}`
-);
-
-
-
-const data =
-await response.json();
-
-
-
-const pair =
-data.pairs[0];
-
-
-
-if(!pair) return;
-
-
-
-document.getElementById("price").innerText =
-"$"+Number(pair.priceUsd)
-.toFixed(6);
-
-
-
-document.getElementById("marketcap").innerText =
-"$"+Number(pair.marketCap)
-.toLocaleString();
-
-
-
-document.getElementById("volume").innerText =
-"$"+Number(pair.volume.h24)
-.toLocaleString();
-
-
-
-document.getElementById("liquidity").innerText =
-"$"+Number(pair.liquidity.usd)
-.toLocaleString();
-
-
-
-}
-
-catch(error){
-
-console.log(
-"Dex error:",
-error
-);
-
-}
-
-
-
-}
-
-
-
-
-loadDexData();
-
-
-
-setInterval(
-loadDexData,
-60000
-);
-
-Notify.show("🚀 Robinhood Cloak Loaded");
