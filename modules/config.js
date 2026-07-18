@@ -30,9 +30,9 @@ const CONFIG = {
 
         WEBSITE: "https://yourwebsite.com",
 
-        X: "https://x.com/",
+        X: "https://x.com/robinhoodcloak",
 
-        TELEGRAM: "https://t.me/",
+        TELEGRAM: "https://t.me/robinhoodcloak",
 
         DEX: "https://dexscreener.com/"
 
@@ -48,6 +48,10 @@ const CONFIG = {
 
     MARKET: {
 
+        PAIR_ADDRESS: "",
+
+        REFRESH: 30000 
+       
         PRICE: "$0.000000",
 
         MARKETCAP: "$0",
