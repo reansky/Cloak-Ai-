@@ -1,285 +1,147 @@
 /* =====================================================
-   THE CLOAK AI SYSTEM
-   Version 2.0
+   THE CLOAK AI V2
 ===================================================== */
 
+document.addEventListener("DOMContentLoaded", () => {
 
-document.addEventListener("DOMContentLoaded",()=>{
+    const toggle = document.getElementById("cloak-toggle");
+    const chat = document.getElementById("cloak-chat");
+    const close = document.getElementById("close-chat");
 
+    const messages = document.getElementById("chat-messages");
+    const input = document.getElementById("user-input");
+    const send = document.getElementById("send-message");
 
-const cloakToggle =
-document.getElementById("cloak-toggle");
+    if (!toggle || !chat) return;
 
+    toggle.onclick = () => {
 
-const cloakChat =
-document.getElementById("cloak-chat");
+        chat.style.display = "flex";
 
+        input.focus();
 
-const closeChat =
-document.getElementById("close-chat");
+    };
 
+    close.onclick = () => {
 
-const sendButton =
-document.getElementById("send-message");
+        chat.style.display = "none";
 
+    };
 
-const userInput =
-document.getElementById("user-input");
+    function bot(text){
 
+        const div=document.createElement("div");
 
-const messages =
-document.getElementById("chat-messages");
+        div.className="bot-message";
 
+        div.innerHTML=text;
 
+        messages.appendChild(div);
 
+        messages.scrollTop=messages.scrollHeight;
 
+    }
 
-if(!cloakToggle || !cloakChat){
+    function user(text){
 
-    console.log("Cloak AI UI not found");
+        const div=document.createElement("div");
 
-    return;
+        div.className="user-message";
 
-}
+        div.innerHTML=text;
 
+        messages.appendChild(div);
 
+        messages.scrollTop=messages.scrollHeight;
 
+    }
 
+    function reply(q){
 
-cloakToggle.style.display="flex";
+        q=q.toLowerCase();
 
+        if(q.includes("hello") || q.includes("hi") || q.includes("gm")){
 
+            return "👋 Welcome, Cloaked One.";
 
+        }
 
+        if(q.includes("rhc") || q.includes("robinhood cloak")){
 
-cloakToggle.addEventListener("click",()=>{
+            return "🟢 Robinhood Cloak ($RHC) is a community project built on Robinhood Chain.";
 
-    cloakChat.style.display="block";
+        }
 
-});
+        if(q.includes("contract")){
 
+            return "📜 Contract:<br><br>"+CONFIG.TOKEN.CONTRACT;
 
+        }
 
+        if(q.includes("price")){
 
+            return "💰 Current Price:<br><br>"+CONFIG.MARKET.PRICE;
 
-if(closeChat){
+        }
 
-closeChat.addEventListener("click",()=>{
+        if(q.includes("market")){
 
-    cloakChat.style.display="none";
+            return "📊 Market Cap: "+CONFIG.MARKET.MARKETCAP+
+            "<br>Liquidity: "+CONFIG.MARKET.LIQUIDITY+
+            "<br>Volume: "+CONFIG.MARKET.VOLUME;
 
-});
+        }
 
-}
+        if(q.includes("telegram")){
 
+            return "📢 Telegram:<br><br>"+CONFIG.LINKS.TELEGRAM;
 
+        }
 
+        if(q.includes("website")){
 
+            return "🌐 Website:<br><br>"+CONFIG.LINKS.WEBSITE;
 
-function addUserMessage(text){
+        }
 
+        if(q.includes("x") || q.includes("twitter")){
 
-const div=document.createElement("div");
+            return "🐦 X:<br><br>"+CONFIG.LINKS.X;
 
-div.className="user-message";
+        }
 
-div.innerText=text;
+        return "🤖 I'm still learning. More Robinhood Cloak knowledge will be added soon.";
 
-messages.appendChild(div);
+    }
 
+    function sendMessage(){
 
-messages.scrollTop =
-messages.scrollHeight;
+        const text=input.value.trim();
 
+        if(text==="") return;
 
-}
+        user(text);
 
+        input.value="";
 
+        setTimeout(()=>{
 
+            bot(reply(text));
 
+        },400);
 
-function addBotMessage(text){
+    }
 
+    send.onclick=sendMessage;
 
-const div=document.createElement("div");
+    input.addEventListener("keypress",(e)=>{
 
-div.className="bot-message";
+        if(e.key==="Enter"){
 
-div.innerHTML=text;
+            sendMessage();
 
-messages.appendChild(div);
+        }
 
-
-messages.scrollTop =
-messages.scrollHeight;
-
-
-}
-
-
-
-
-
-
-function getReply(question){
-
-
-question =
-question.toLowerCase();
-
-
-
-
-if(question.includes("$rhc")
-|| question.includes("rhc")){
-
-
-return "🟢 Robinhood Cloak ($RHC) is a community-driven meme token built on Robinhood Chain.";
-
-
-}
-
-
-
-
-
-if(question.includes("website")){
-
-
-return "🌐 Welcome to the official Robinhood Cloak ecosystem.";
-
-
-}
-
-
-
-
-
-if(question.includes("roadmap")){
-
-
-return "🚀 Website → AI → Terminal → Market → Dashboard.";
-
-
-}
-
-
-
-
-
-if(question.includes("contract")){
-
-
-return "📜 Contract information will be updated after launch.";
-
-
-}
-
-
-
-
-
-if(
-question.includes("hello")
-||
-question.includes("hi")
-||
-question.includes("gm")
-){
-
-
-return "👋 Welcome, Cloaked One. How can I help?";
-
-
-}
-
-
-
-
-
-return "🟢 The Cloak AI is learning. More intelligence modules coming soon.";
-
-
-}
-
-
-
-
-
-
-function sendMessage(){
-
-
-const text =
-userInput.value.trim();
-
-
-
-if(text==="") return;
-
-
-
-addUserMessage(text);
-
-
-
-userInput.value="";
-
-
-
-setTimeout(()=>{
-
-
-addBotMessage(
-getReply(text)
-);
-
-
-},500);
-
-
-
-}
-
-
-
-
-
-if(sendButton){
-
-sendButton.addEventListener(
-"click",
-sendMessage
-);
-
-}
-
-
-
-
-
-if(userInput){
-
-userInput.addEventListener(
-"keypress",
-(e)=>{
-
-if(e.key==="Enter"){
-
-sendMessage();
-
-}
-
-});
-
-
-}
-
-
-
-
-
-console.log("✅ The Cloak AI Online");
-
+    });
 
 });
