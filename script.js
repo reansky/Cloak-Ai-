@@ -258,3 +258,39 @@ navbar.style.background="rgba(0,0,0,.35)";
 }
 
 });
+
+/* =====================================================
+   MOUSE GLOW
+===================================================== */
+
+const glow=document.getElementById("mouse-glow");
+
+document.addEventListener("mousemove",(e)=>{
+
+if(!glow) return;
+
+glow.style.left=e.clientX+"px";
+
+glow.style.top=e.clientY+"px";
+
+});
+
+
+/* =====================================================
+   HERO PARALLAX
+===================================================== */
+
+const heroImage=document.querySelector(".hero-image img");
+
+document.addEventListener("mousemove",(e)=>{
+
+if(!heroImage) return;
+
+const x=(e.clientX-window.innerWidth/2)/45;
+
+const y=(e.clientY-window.innerHeight/2)/45;
+
+heroImage.style.transform=
+`translate(${x}px,${y}px)`;
+
+});
