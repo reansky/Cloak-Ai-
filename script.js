@@ -100,3 +100,42 @@ document.querySelectorAll("a").forEach(button => {
     });
 
 });
+
+// SCROLL REVEAL
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+
+function reveal(){
+
+reveals.forEach(item=>{
+
+const windowHeight =
+window.innerHeight;
+
+
+const elementTop =
+item.getBoundingClientRect().top;
+
+
+if(elementTop < windowHeight - 120){
+
+item.classList.add("active");
+
+}
+
+
+});
+
+
+}
+
+
+window.addEventListener(
+"scroll",
+reveal
+);
+
+
+reveal();
