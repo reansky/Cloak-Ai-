@@ -190,6 +190,10 @@ window.Terminal = {
                 this.print("status");
                 this.print("market");
                 this.print("price");
+                this.print("holders");
+                this.print("version");
+                this.print("copy");
+                this.print("links");
                 this.print("contract");
                 this.print("website");
                 this.print("telegram");
