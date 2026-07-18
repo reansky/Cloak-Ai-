@@ -1,124 +1,101 @@
-/* =========================================================
-   ROBINHOOD CLOAK V4
-=========================================================*/
+/* ==========================================
+   ROBINHOOD CLOAK
+   PREMIUM SCRIPT PART 1
+========================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+// Navbar berubah saat scroll
 
-    /*==========================
-      LOADER
-    ==========================*/
+const navbar = document.getElementById("navbar");
 
-    const loader = document.getElementById("loader");
-    const progress = document.getElementById("loader-progress");
+window.addEventListener("scroll", () => {
 
-    let value = 0;
+    if (window.scrollY > 40) {
 
-    const loading = setInterval(() => {
+        navbar.style.background = "rgba(8,8,8,.82)";
+        navbar.style.borderColor = "rgba(0,214,79,.20)";
+        navbar.style.boxShadow = "0 10px 40px rgba(0,0,0,.45)";
+        navbar.style.top = "14px";
 
-        value += 2;
+    } else {
 
-        if (progress) {
-            progress.style.width = value + "%";
-        }
+        navbar.style.background = "rgba(12,12,12,.55)";
+        navbar.style.borderColor = "rgba(255,255,255,.08)";
+        navbar.style.boxShadow = "none";
+        navbar.style.top = "22px";
 
-        if (value >= 100) {
+    }
 
-            clearInterval(loading);
+});
 
-            setTimeout(() => {
+// Hero Fade
 
-                if (loader) {
+window.addEventListener("scroll", () => {
 
-                    loader.style.opacity = "0";
-                    loader.style.pointerEvents = "none";
+    const hero = document.querySelector(".hero");
 
-                    setTimeout(() => {
+    let y = window.scrollY;
 
-                        loader.remove();
+    hero.style.opacity = 1 - y / 900;
 
-                    },500);
+    hero.style.transform =
+        `translateY(${y * 0.18}px)`;
 
-                }
+});
 
-            },300);
+// Reveal Animation
 
-        }
+const observer = new IntersectionObserver(entries => {
 
-    },25);
+    entries.forEach(entry => {
 
-    /*==========================
-      BACK TO TOP
-    ==========================*/
+        if (entry.isIntersecting) {
 
-    const topButton = document.getElementById("backToTop");
-
-    window.addEventListener("scroll",()=>{
-
-        if(window.scrollY>500){
-
-            topButton.style.display="flex";
-
-        }else{
-
-            topButton.style.display="none";
+            entry.target.classList.add("show");
 
         }
 
     });
 
-    topButton.addEventListener("click",()=>{
+}, {
 
-        window.scrollTo({
+    threshold: .15
 
-            top:0,
+});
 
-            behavior:"smooth"
+document.querySelectorAll("section").forEach(section => {
 
-        });
+    section.classList.add("hidden");
 
-    });
+    observer.observe(section);
 
-    /*==========================
-      PROGRESS BAR
-    ==========================*/
+});
 
-    const progressBar=document.getElementById("progress-bar");
+// Hero tetap tampil
 
-    window.addEventListener("scroll",()=>{
+document.querySelector(".hero").classList.remove("hidden");
 
-        const scroll=
+// Button Ripple
 
-        document.documentElement.scrollTop;
+document.querySelectorAll("a").forEach(button => {
 
-        const height=
+    button.addEventListener("click", function(e){
 
-        document.documentElement.scrollHeight-
+        const ripple = document.createElement("span");
 
-        document.documentElement.clientHeight;
+        ripple.className = "ripple";
 
-        progressBar.style.width=
+        const rect = this.getBoundingClientRect();
 
-        (scroll/height)*100+"%";
+        ripple.style.left = (e.clientX - rect.left) + "px";
+        ripple.style.top = (e.clientY - rect.top) + "px";
 
-    });
+        this.appendChild(ripple);
 
-    /*==========================
-      HERO FLOAT
-    ==========================*/
+        setTimeout(()=>{
 
-    const hero=document.querySelector(".hero-image img");
+            ripple.remove();
 
-    document.addEventListener("mousemove",(e)=>{
-
-        if(!hero) return;
-
-        const x=(e.clientX/window.innerWidth-.5)*12;
-
-        const y=(e.clientY/window.innerHeight-.5)*12;
-
-        hero.style.transform=
-
-        `rotateY(${x}deg) rotateX(${-y}deg)`;
+        },700);
 
     });
 
